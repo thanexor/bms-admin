@@ -1,0 +1,11 @@
+# Environment
+.env
+.envexample
+
+# OSX files
+.DS_store
+
+# static
+node_modules/
+.sass-cache
+assets/build
