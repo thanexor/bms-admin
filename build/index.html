@@ -4,26 +4,143 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bad Movies Squad</title>
-
     <!-- update the version number as needed -->
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-messaging.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-functions.js"></script>
-    <script defer src="/__/firebase/init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <!-- load custom scripts and stylesheets -->
-    <link rel="stylesheet" href="/css/app.css">
-
+    <link rel="stylesheet" href="css/app.css">
   </head>
-  <body>
-    <p>Bad Movie Squad STATZ</p>
 
-    <script type="text/javascript" src="/js/app.min.js"></script>
+  <body>
+
+    <div class="main">
+      <div class="col-side">
+        <h1 class="site-title">Bad Movie Squad</h1>
+        <nav class="side-nav">
+          <ul>
+            <li><a href="#" class="active">Next up</a></li>
+            <li><a href="#">To watch</a></li>
+            <li><a href="#">Watched</a></li>
+            <li><a href="#">Scoreboard</a></li>
+            <li><a href="#">Rules</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="col-main">
+
+        <section class="subsection">
+          <h2>Next up</h2>
+          <h2>Wednesday, Junelygust 39th, 3005 @ Jackson's House</h2>
+          <ul>
+            <li>Double Down</li>
+            <li>Double Down again</li>
+          </ul>
+        </section>
+
+        <section class="subsection">
+          <h2>To watch</h2>
+          <ul>
+            <li>Fateful Findings</li>
+            <li>Fateful Findings</li>
+            <li>Fateful Findings</li>
+            <li>Fateful Findings</li>
+            <li>Fateful Findings</li>
+          </ul>
+        </section>
+
+        <section class="subsection">
+          <h2>Watched</h2>
+          <ul>
+            <li>I Am Here... Now</li>
+            <li>I Am Here... Now</li>
+            <li>I Am Here... Now</li>
+            <li>I Am Here... Now</li>
+            <li>I Am Here... Now</li>
+          </ul>
+        </section>
+
+        <section class="subsection">
+          <h2>Scoreboard</h2>
+          <table>
+            <tr>
+              <td>Thane</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Jackson</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Mr Poop </td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Chris</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Larry</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>Jordan</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Vanessa</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Megan</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>Wizzy</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Katy</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Beth</td>
+              <td>3</td>
+            </tr>
+          </table>
+        </section>
+
+        <section class="subsection">
+          <h2>Rules</h2>
+          <h3>POINTS</h3>
+          <ul>
+            <li>Show up at official Movie Night = 1 point</li>
+            <li>First time showing up = 3 points</li>
+          </ul>
+
+          <h3>PICKS</h3>
+          <ul>
+            <li>Spend 3 points to secure a pick</li>
+            <li>Picks can be outbid by adding an additional point (if you hate the movie or whatever)</li>
+            <li>Pick spots are made on a first-come-first-serve basis</li>
+          </ul>
+
+          <h3>MOVIE LIST</h3>
+          <ul>
+            <li>Movies should be picked from The List</li>
+            <li>Just message Thane to get a movie added!</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/app.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
-        console.log('hi dad');
+        
         // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
         // // The Firebase SDK is initialized and available here!
         //

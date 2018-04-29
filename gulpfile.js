@@ -5,20 +5,32 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 var prefixer = require('gulp-autoprefixer');
 
+var paths = {
+    style_app: 'assets/scss/app.scss',
+    styles: 'assets/scss/*.scss',
+    scripts: 'assets/js/*.js',
+}
+
 gulp.task('css', function(){
-  return gulp.src('assets/scss/*.scss')
+  return gulp.src(paths.style_app)
     .pipe(sass())
     .pipe(prefixer({ browsers: 'last 2 versions' }))
     .pipe(minifyCSS())
+    .pipe(concat('app.css'))
     .pipe(gulp.dest('build/css'))
 });
 
 gulp.task('js', function(){
-  return gulp.src('assets/js/*.js')
+  return gulp.src(paths.scripts)
     .pipe(sourcemaps.init())
     .pipe(concat('app.min.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('build/js'))
+});
+
+gulp.task('watch', function() {
+    gulp.watch([paths.styles], ['css']);
+    gulp.watch([paths.scripts], ['js']);
 });
 
 gulp.task('default', [ 'css', 'js' ]);

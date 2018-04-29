@@ -1,0 +1,55 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  height: 100%;
+}
+
+.col-side,
+.col-main {
+  height: 100%;
+  padding: 0 30px;
+}
+
+.col-side {
+  width: 30%;
+  background: none $purple;
+  color: $white;
+}
+
+.col-main {
+  width: 80%;
+}
+
+.container {
+	width: $container-phone;
+  margin: 0 auto;
+	
+  @media (min-width: $screen-sm-min) {
+    width: $container-phone;
+  }
+  @media (min-width: $screen-md-min) {
+    width: $container-tablet;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-desktop;
+  }
+  @media (min-width: $screen-lg-min) {
+    width: $container-lg-desktop;
+  }
+  @media (min-width: $screen-xl-min) {
+    width: $container-xl-desktop;
+  }
+
+  &.container-scrunch {
+    padding-right: 8%;
+    padding-left: 8%;
+  }
+}
