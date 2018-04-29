@@ -13,5 +13,8 @@
     "gulp-sass": "^4.0.1",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-csso": "^3.0.1"
+  },
+  "dependencies": {
+    "vue": "^2.5.16"
   }
 }
