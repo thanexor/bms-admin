@@ -1,1 +1,3 @@
-console.log('working');
+var app = new Vue({
+
+});
