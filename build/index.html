@@ -4,21 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bad Movies Squad</title>
-
     <!-- update the version number as needed -->
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-messaging.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase-functions.js"></script>
-    <script defer src="/__/firebase/init.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
     <!-- load custom scripts and stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/css/app.css">
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
   </head>
+
   <body>
 
     <h1>Bad Movie Squad STATZ</h1>
@@ -32,7 +30,207 @@
     </div>
 
 
-    <script type="text/javascript" src="/js/app.min.js"></script>
+    <div class="main">
+      <div class="col-side">
+        <h1 class="site-title">Bad Movie Squad</h1>
+        <nav class="side-nav">
+          <ul>
+            <li><a href="#" class="active">Next up</a></li>
+            <li><a href="#">To watch</a></li>
+            <li><a href="#">Watched</a></li>
+            <li><a href="#">Scoreboard</a></li>
+            <li><a href="#">Rules</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="col-main">
+
+        <section class="subsection">
+          <h2>Next up</h2>
+          <div class="night">
+            <div class="night__meta">
+              <h3>THE BREEN-ENING</h3>
+              <p>Wednesday, Junelygust 39th, 3005 @ Jackson's House</p>
+            </div>
+
+            <div class="movies">
+
+              <div class="movie" style="background-image: url(https://i.ytimg.com/vi/_PtX6JHcjz4/maxresdefault.jpg)">
+
+                <div class="movie__meta">
+                  <a href="https://www.imdb.com/title/tt1561457/">
+                    <h4 class="movie__title">Double Down (2005)</h4>
+                  </a>
+                  <p>Picked by Thane</p>
+                </div>
+
+                <div class="movie__ratings">
+                  <div class="movie__ratings__listing">
+                    <h5>Loved:</h5>
+                    <ul>
+                      <li>Thane</li>
+                      <li>Jackson</li>
+                      <li>Travis</li>
+                    </ul>
+                  </div>
+
+                  <div class="movie__ratings__listing">
+                    <h5>Hated:</h5>
+                    <ul>
+                      <li>Chris</li>
+                      <li>Larry</li>
+                    </ul>
+                  </div>
+
+                  <div class="movie__ratings__listing">
+                    <h5>Meh:</h5>
+                    <ul>
+                      <li>Nobody!</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="movie" style="background-image: url(https://static.wixstatic.com/media/500458_52fe864b389b4b67b4abe6fdb7aa472a~mv2.jpg/v1/fill/w_630,h_420,al_c,q_80,usm_0.66_1.00_0.01/500458_52fe864b389b4b67b4abe6fdb7aa472a~mv2.webp)">
+
+                <div class="movie__meta">
+                  <a href="https://www.imdb.com/title/tt1561457/">
+                    <h4 class="movie__title">Fateful Findings (2013)</h4>
+                  </a>
+                  <p>Picked by Thane</p>
+                </div>
+
+                <div class="movie__ratings">
+                  <div class="movie__ratings__listing">
+                    <h5>Loved:</h5>
+                    <ul>
+                      <li>Thane</li>
+                      <li>Jackson</li>
+                      <li>Travis</li>
+                    </ul>
+                  </div>
+
+                  <div class="movie__ratings__listing">
+                    <h5>Hated:</h5>
+                    <ul>
+                      <li>Chris</li>
+                      <li>Larry</li>
+                    </ul>
+                  </div>
+
+                  <div class="movie__ratings__listing">
+                    <h5>Meh:</h5>
+                    <ul>
+                      <li>Nobody!</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <section class="subsection">
+          <h2>To watch</h2>
+          <ul>
+            <li>Fateful Findings</li>
+            <li>Fateful Findings</li>
+            <li>Fateful Findings</li>
+            <li>Fateful Findings</li>
+            <li>Fateful Findings</li>
+          </ul>
+        </section>
+
+        <section class="subsection">
+          <h2>Watched</h2>
+          <ul>
+            <li>I Am Here... Now</li>
+            <li>I Am Here... Now</li>
+            <li>I Am Here... Now</li>
+            <li>I Am Here... Now</li>
+            <li>I Am Here... Now</li>
+          </ul>
+        </section>
+
+        <section class="subsection">
+          <h2>Scoreboard</h2>
+          <table>
+            <tr>
+              <td>Thane</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Jackson</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Mr Poop </td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Chris</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Larry</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>Jordan</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Vanessa</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Megan</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>Wizzy</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Katy</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Beth</td>
+              <td>3</td>
+            </tr>
+          </table>
+        </section>
+
+        <section class="subsection">
+          <h2>Rules</h2>
+          <h3>POINTS</h3>
+          <ul>
+            <li>Show up at official Movie Night = 1 point</li>
+            <li>First time showing up = 3 points</li>
+          </ul>
+
+          <h3>PICKS</h3>
+          <ul>
+            <li>Spend 3 points to secure a pick</li>
+            <li>Picks can be outbid by adding an additional point (if you hate the movie or whatever)</li>
+            <li>Pick spots are made on a first-come-first-serve basis</li>
+          </ul>
+
+          <h3>MOVIE LIST</h3>
+          <ul>
+            <li>Movies should be picked from The List</li>
+            <li>Just message Thane to get a movie added!</li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+
+    <script type="text/javascript" src="js/app.min.js"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
       // Move to routes file after we get importing
