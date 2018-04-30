@@ -24,6 +24,11 @@ body {
   color: $white;
 }
 
+.col-side__inner {
+  position: fixed;
+  width: 100%;
+}
+
 .col-main {
   width: 80%;
 }

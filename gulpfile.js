@@ -11,9 +11,15 @@ var paths = {
     scripts: 'assets/js/*.js',
 }
 
+function onError(err) {
+  console.log(err);
+  this.emit('end');
+}
+
 gulp.task('css', function(){
   return gulp.src(paths.style_app)
     .pipe(sass())
+    .on('error', onError)
     .pipe(prefixer({ browsers: 'last 2 versions' }))
     .pipe(minifyCSS())
     .pipe(concat('app.css'))
