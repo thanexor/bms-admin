@@ -2,10 +2,14 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 16px;
   height: 100%;
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
 }
+
+* { box-sizing: border-box; }
 
 .main {
   display: flex;
@@ -18,20 +22,38 @@ body {
   padding: 0 30px;
 }
 
-.col-side {
-  width: 30%;
-  background: none $purple;
+.col-side {  
   color: $white;
-}
+  position: relative;
 
-.col-side__inner {
-  position: fixed;
-  width: 100%;
+  @include media-up(tablet) {
+    width: 300px;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+
+  &::after {
+    content: '';
+    height: 300%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: none $purple;
+    z-index: -1;
+  }
 }
 
 .col-main {
-  width: 80%;
+  width: 100%;
+
+  @include media-up(tablet) {
+    padding-left: 330px;
+  }
 }
+
+
 
 .container {
 	width: $container-phone;
