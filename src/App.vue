@@ -1,22 +1,11 @@
 <template>
     <div id="app">
-      <div class="col-side">
-        <h1 class="site-title">Bad Movie Squad</h1>
-        <nav class="side-nav">
-          <ul>
-            <li><a href="#" class="active">Next up</a></li>
-            <router-link to="/dashboard">To Watch</router-link>
-            <router-link to="/dashboard">Watched</router-link>
-            <router-link to="/dashboard">Scoreboard</router-link>
-            <router-link to="/dashboard">Rules</router-link>
-          </ul>
-        </nav>
-        <button v-on:click="logout">Logout</button>
-      </div>
+      <Nav/>
 
       <div class="col-main">
         <h1>Bad Movie Squad STATZ</h1>
         <router-view></router-view>
+        <button v-on:click="logout">Logout</button>
       </div>
     </div>
 </template>
@@ -24,17 +13,23 @@
 <script>
 import * as firebase from 'firebase';
 
+import Nav from './components/Nav.vue'
+
 export default {
-  name: 'app',
+  name: 'App',
 
   methods: {
     logout: () => {
       firebase.auth().signOut()
     }
-  }
+  },
+
+  components: {
+    Nav
+  },
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   @import 'styles/app.scss'
 </style>

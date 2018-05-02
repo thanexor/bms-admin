@@ -2,7 +2,12 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import Login from './Login.vue'
-import Hellow from './components/HelloWorld.vue'
+
+import Upcoming from './components/Upcoming.vue'
+import List from './components/List.vue'
+import Rules from './components/Rules.vue'
+import Scores from './components/Scores.vue'
+import Watched from './components/Watched.vue'
 
 import * as firebase from 'firebase';
 
@@ -20,8 +25,11 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { name: 'login', path: '/login', component: Login },
-  { name: 'home', path: '/home', component: App}
+  { name: 'upcoming', path: '/upcoming', component: Upcoming },
+  { name: 'list', path: '/list', component: List },
+  { name: 'scores', path: '/scores', component: Scores },
+  { name: 'watched', path: '/watched', component: Watched },
+  { name: 'rules', path: '/rules', component: Rules },
 ]
 
 const router = new VueRouter({
@@ -32,11 +40,8 @@ firebase.auth().onAuthStateChanged(function(user) {
   var component = Login;
 
   if (user) {
-    console.log('is logged in', user);
     component = App;
   }
-
-  console.log('using component', component);
 
   new Vue({
     router,

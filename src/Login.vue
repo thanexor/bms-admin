@@ -8,7 +8,7 @@
 import * as firebase from 'firebase'
 
 export default {
-  name: 'login',
+  name: 'Login',
 
   methods: {
       signin: () => {
