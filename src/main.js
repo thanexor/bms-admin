@@ -20,15 +20,26 @@ Vue.config.productionTip = false
 Vue.use(VueRouter)
 
 const routes = [
-  { name: 'login', path: '/', component: Login },
-  { name: 'foo2', path: '/foo2', component: Hellow}
+  { name: 'login', path: '/login', component: Login },
+  { name: 'home', path: '/home', component: App}
 ]
 
 const router = new VueRouter({
   routes
 })
 
-new Vue({
-  router,
-  render: createEle => createEle (App)
-}).$mount('#app')
+firebase.auth().onAuthStateChanged(function(user) {
+  var component = Login;
+
+  if (user) {
+    console.log('is logged in', user);
+    component = App;
+  }
+
+  console.log('using component', component);
+
+  new Vue({
+    router,
+    render: createEle => createEle (component)
+  }).$mount('#app')
+});
