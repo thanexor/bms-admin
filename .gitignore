@@ -1,6 +1,8 @@
 # Environment
 .env
 .envexample
+.env.local
+.env.*.local
 
 # OSX files
 .DS_store
@@ -9,3 +11,19 @@
 node_modules/
 .sass-cache
 assets/build
+/dist
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw*
