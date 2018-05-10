@@ -1,4 +1,5 @@
 <template>
+
   <div class="col-side">
     <h1 class="site-title">Bad Movie Squad</h1>
     <nav class="side-nav">
@@ -9,6 +10,9 @@
         <router-link to="/scores">Scores</router-link>
         <router-link to="/rules">Rules</router-link>
       </ul>
+      <div class="actions">
+        <button class="btn btn--full" v-on:click="logout">Log out</button>
+      </div>
     </nav>
   </div>
 </template>

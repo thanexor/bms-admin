@@ -5,7 +5,6 @@
       <div class="col-main">
         <h1>Bad Movie Squad STATZ</h1>
         <router-view></router-view>
-        <button v-on:click="logout">Logout</button>
       </div>
     </div>
 </template>

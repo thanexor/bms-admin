@@ -8,6 +8,9 @@ $green: #4EFFB0;
 $white: #fff;
 $black: #000;
 
+$btn-color-bottom: darken($teal, 20%);
+$btn-color-top: darken(adjust-hue($teal, 25deg), 20%);
+
 // Breakpoints
 $screen-xs-min: 480px;  // Extra small screen / phone
 $screen-sm-min: 768px;  // Small screen / tablet
