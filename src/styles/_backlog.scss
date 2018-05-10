@@ -1,0 +1,90 @@
+.backlog {
+  padding: 0;
+  margin: 0;
+  list-style: outside none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.backlog__movie {
+  width: 100%;
+  background-color: rgba($periwinkle, .5);
+  background-size: cover;
+  background-position: center center;
+  background-blend-mode: soft-light;
+
+  &:nth-child(2n) { background-color: rgba($teal,.5); }
+  &:nth-child(2n+3) { background-color: rgba($green,.5); }
+  &:nth-child(3n) { background-color: rgba($babyblue,.5); }
+  &:nth-child(5n+1) { background-color: rgba($purple,.5); }
+
+  @include media-up(tablet) {
+    width: 48%;
+    margin: 5px 0 0 5px;
+  }
+
+  @include media-up(standard) {
+    width: 31%;
+  }
+
+  .backlog__movie__control {
+    display: block;
+    position: relative;
+    width: 100%;
+    padding: 1.75em 1em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: linear-gradient(to bottom right, rgba($black, .1), rgba($black, .95));
+    border: 0;
+    color: $white;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: .85em;
+    opacity: .99;
+    transition: opacity 150ms ease;
+
+    &::before {
+      content: 'PICK';
+      position: absolute;
+      left: 0;
+      color: $white;
+      top: 15px;
+      width: 100%;
+      text-align: center;
+      font-size: .75em;
+      font-weight: 200;
+      pointer-events: none;
+      opacity: 0;
+      transform: translateY(-5px);
+      transition:
+        opacity 200ms ease-out,
+        transform 100ms ease-out;
+    }
+
+    @include media-up(tablet) {
+      font-size: 1em;
+    }
+
+    &:hover {
+      opacity: .85;
+
+      &::before {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &.backlog__movie--add {
+    background: none transparent;
+    
+    .btn {
+      height: 100%;
+    }
+  }
+}

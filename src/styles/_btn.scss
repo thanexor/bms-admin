@@ -1,0 +1,44 @@
+.actions {
+  margin: 2em 0 0;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 110px;
+  background: linear-gradient(
+   -35deg,
+   var(--c1, $btn-color-top),
+   var(--c2, $btn-color-bottom) 50%,
+   var(--c1, $btn-color-top)) var(--x, 0)/ 300%;
+  color: $white;
+  text-align: center;
+  text-shadow: 1px 1px 0 rgba(darken($teal, 40%), .75);
+  border: 0;
+  outline: 2px solid transparent;
+  padding: 1.2em 1.65em;
+  font-size: 1em;
+  line-height: 1.1;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition:
+    outline 200ms ease-in-out,
+    background 150ms ease-in-out;
+
+  &:hover {
+    --x: 40%;
+  }
+
+  &:focus {
+    outline: 2px solid rgba(darken($teal, 40%), .15);
+  }
+
+  &:active {
+    outline: 2px solid rgba(darken($teal, 40%), .35);
+    --x: 20%;
+  }
+}
+
+.btn--full {
+  width: 100%;
+}

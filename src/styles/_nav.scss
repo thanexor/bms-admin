@@ -33,10 +33,11 @@
     }
 
     &:hover {
-      background-color: lighten($purple, 10%);
+      background-color: lighten($purple, 4%);
     }
 
-    &:focus {
+    &:focus,
+    &:active {
       background-color: darken($purple, 20%);
     }
 
