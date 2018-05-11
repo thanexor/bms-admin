@@ -1,0 +1,53 @@
+.scoreboard {
+  font-size: 1.75rem;
+  border-collapse: collapse;
+  min-width: 70%;
+
+  th,
+  td {
+    text-align: left;
+    padding: 1rem 1.5rem;
+    border: 0;
+    vertical-align: top;
+  }
+
+  th {
+    background: $teal;
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+    color: $black;
+    font-weight: 300;
+    font-size: 1.25rem;
+  }
+
+  td {
+    h4 {
+      margin: 0 0 .25rem;
+    }
+
+    p {
+      opacity: .65;
+      font-weight: 300;
+      font-size: 1rem;
+      margin: .05rem 0;
+    }
+  }
+
+  tr:nth-child(even) td {
+    background: rgba($teal, .5);
+  }
+
+  tr:nth-child(odd) td {
+    background: rgba($teal, .35);
+  }
+
+  .scoreboard__score {
+    font-weight: 700;
+    color: $black;
+    text-align: right;
+  }
+
+  .scoreboard__score--head {
+    font-weight: 300;
+  }
+}
