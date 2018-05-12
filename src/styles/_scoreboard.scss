@@ -15,7 +15,7 @@
     background: $teal;
     padding-top: .75rem;
     padding-bottom: .75rem;
-    color: $black;
+    color: $white;
     font-weight: 300;
     font-size: 1.25rem;
   }
@@ -26,9 +26,9 @@
     }
 
     p {
-      opacity: .65;
-      font-weight: 300;
-      font-size: 1rem;
+      color: lighten($purple, 20%);
+      font-weight: 400;
+      font-size: .8rem;
       margin: .05rem 0;
     }
   }
@@ -43,11 +43,12 @@
 
   .scoreboard__score {
     font-weight: 700;
-    color: $black;
+    color: $purple;
     text-align: right;
   }
 
   .scoreboard__score--head {
     font-weight: 300;
+    color: $white;
   }
 }

@@ -1,5 +1,7 @@
 .night {
-  background: linear-gradient(165deg, $babyblue, darken($babyblue, 40%) 100%);
+  // background: linear-gradient(165deg, $babyblue, darken($babyblue, 40%) 100%);
+  // background: radial-gradient(circle at bottom right, #a770ef, #cf8bf3, #fdb99b);
+  background: radial-gradient(circle at top left, $purple, $teal, $green);
   color: $white;
 }
 
@@ -28,7 +30,7 @@
   flex-shrink: 1;
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: top left;
+  background-position: center center;
 
   // colored overlay
   &::after {
@@ -38,7 +40,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(165deg, rgba(darken($teal, 50%), .65), rgba(darken($green, 55%), .85) 70%)
+    background: linear-gradient(165deg, rgba(darken($teal, 40%), .65), rgba(darken($green, 45%), .85) 70%)
   }
 }
 

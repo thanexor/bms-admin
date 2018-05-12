@@ -5,6 +5,7 @@ body,
   margin: 0;
   padding: 0;
   line-height: 1.5;
+  display: flex;
 }
 
 html,
@@ -16,16 +17,14 @@ input, textarea, select, button {
   font-weight: 300;
 }
 
-* { box-sizing: border-box; }
-
-.main {
-  display: flex;
-  height: 100%;
+body {
+  color: $purple;
 }
+
+* { box-sizing: border-box; }
 
 .col-side,
 .col-main {
-  height: 100%;
   padding: 0 30px;
 }
 
@@ -38,6 +37,7 @@ input, textarea, select, button {
     position: fixed;
     top: 0;
     left: 0;
+    height: 100vh;
   }
 
   &::after {
@@ -47,13 +47,16 @@ input, textarea, select, button {
     position: absolute;
     top: 0;
     left: 0;
-    background: none $purple;
+    // background: none $purple;
+    // background: radial-gradient(circle at bottom right, #a770ef, #cf8bf3, #fdb99b);
+    background: radial-gradient(circle at top left, $purple, adjust-hue($purple, 50deg));
     z-index: -1;
   }
 }
 
 .col-main {
   width: 100%;
+  padding: 30px;
 
   @include media-up(tablet) {
     padding-left: 330px;
@@ -81,9 +84,14 @@ input, textarea, select, button {
   @media (min-width: $screen-xl-min) {
     width: $container-xl-desktop;
   }
+}
 
-  &.container-scrunch {
-    padding-right: 8%;
-    padding-left: 8%;
+.subsection {
+  + .subsection {
+    margin-top: 60px;
+  }
+
+  h2 {
+    margin-top: 0;
   }
 }
