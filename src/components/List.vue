@@ -1,7 +1,8 @@
 <template>
     <section class="subsection">
     <h2>To watch</h2>
-    <img src="../assets/logo.png" />
+
+    <Search/>
 
     <ul class="backlog">
         <li class="backlog__movie" style="background-image: url('https://image.tmdb.org/t/p/w350_and_h196_bestv2/1b5nVZtztbC0qhhYgR0tbGPhECP.jpg');">
@@ -186,7 +187,12 @@
 </template>
 
 <script>
+import Search from './Search.vue'
+
 export default {
-  name: 'List'
+    name: 'List',
+    components: {
+        Search
+    }
 }
 </script>
