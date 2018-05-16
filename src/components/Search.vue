@@ -7,9 +7,9 @@
 
         <div class="search__results" v-bind:class="{ 'has-results': results.length > 0 && search.length > 0 }">
             <ul>
-                <li class="search__result" v-for="movie in results" v-bind:key="movie.id">
+                <li class="search__result" v-for="(movie, index) in results" v-bind:key="movie.id">
                     <h5>{{movie.title}} <small>({{ new Date(movie.release_date).getFullYear() }})</small></h5>
-                    <button class="search__result__add" v-on:click="addMovie" v-bind:data-movietitle="movie.title">Add</button>
+                    <button class="search__result__add" v-on:click="addMovie(index)">Add</button>
                 </li>
             </ul>
         </div>
@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
     name: 'Search',
 
@@ -37,8 +39,6 @@ export default {
         },
 
         searchApi: function (e) {
-            console.log('length', e.target.value.length);
-
             if (e.target.value.length === 0) {
                 this.clearSearch();
             } else {
@@ -54,12 +54,20 @@ export default {
             }
         },
 
-        addMovie: function (e, wut) {
-            var title = '' + e.target.getAttribute('data-movietitle');
-            var picked = !!confirm('Are you sure you want to add ' + title + ' to the backlog?');
+        addMovie: function (index) {
+            var movie = this.results[index],
+                add   = !!confirm('Are you sure you want to add ' + movie.title + ' to the backlog?'),
+                db    = firebase.firestore();
 
-            if (picked) {
-                // add to backlog
+
+
+            if (add) {
+                const settings = {timestampsInSnapshots: true};
+                db.settings(settings);
+
+                var movies = db.collection('Movies');
+                movies.add(movie)
+
                 this.clearResults();
                 this.search = '';
             }
