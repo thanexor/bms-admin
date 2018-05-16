@@ -1,5 +1,5 @@
 <template>
-    <section class="subsection">
+    <section class="subsection" id="scoreboard">
         <h2>Scoreboard</h2>
         <table class="scoreboard">
             <tr>

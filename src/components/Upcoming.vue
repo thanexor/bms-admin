@@ -1,5 +1,5 @@
 <template>
-    <section class="subsection">
+    <section class="subsection" id="upcoming">
         <h2>Next up</h2>
         <div class="night">
             <div class="night__meta">

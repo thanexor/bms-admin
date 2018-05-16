@@ -1,5 +1,5 @@
 <template>
-    <section class="subsection">
+    <section class="subsection" id="rules">
         <h2>Rules</h2>
         <h3>POINTS</h3>
         <ul>
