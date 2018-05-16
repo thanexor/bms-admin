@@ -63,10 +63,6 @@ export default {
                 this.clearResults();
                 this.search = '';
             }
-        },
-
-        convertToYear: function (date) {
-
         }
     }
 }
