@@ -59,8 +59,6 @@ export default {
                 add   = !!confirm('Are you sure you want to add ' + movie.title + ' to the backlog?'),
                 db    = firebase.firestore();
 
-
-
             if (add) {
                 const settings = {timestampsInSnapshots: true};
                 db.settings(settings);

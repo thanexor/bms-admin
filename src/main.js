@@ -36,10 +36,34 @@ const router = new VueRouter({
   routes
 })
 
-firebase.auth().onAuthStateChanged(function(user) {
+
+firebase.auth().onAuthStateChanged(function(authUser) {
   var component = Login;
 
-  if (user) {
+  if (authUser) {
+    var db   = firebase.firestore(),
+        uid = String(authUser.providerData[0].uid);
+
+    const settings = {timestampsInSnapshots: true};
+    db.settings(settings);
+
+    var userRef = db.collection('Users').doc(uid);
+
+    userRef.get().then((user) => {
+      if (!user.exists) {
+        userRef.set(authUser.providerData[0])
+        .then(() => {
+          userRef.update({admin: false})
+          .then(() => {
+            userRef.get().then((user) => { window.currentUser = user.data() });
+          })
+
+        })
+      } else {
+        window.currentUser = user.data();
+      }
+    });
+
     component = App;
   }
 

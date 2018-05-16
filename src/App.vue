@@ -27,12 +27,6 @@ import Rules from './components/Rules.vue'
 export default {
   name: 'App',
 
-  methods: {
-    logout: () => {
-      firebase.auth().signOut()
-    }
-  },
-
   components: {
     Nav,
     Upcoming,
