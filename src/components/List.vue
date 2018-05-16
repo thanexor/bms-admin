@@ -187,12 +187,7 @@
 </template>
 
 <script>
-import Search from './Search.vue'
-
 export default {
-    name: 'List',
-    components: {
-        Search
-    }
+    name: 'List'
 }
 </script>

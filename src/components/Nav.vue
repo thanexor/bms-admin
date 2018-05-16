@@ -2,6 +2,9 @@
 
   <div class="col-side">
     <h1 class="site-title">Bad Movie Squad</h1>
+
+    <Search/>
+
     <nav class="side-nav">
       <ul>
         <li><router-link to="/upcoming">Upcoming</router-link></li>
@@ -18,7 +21,12 @@
 </template>
 
 <script>
+import Search from './Search.vue'
+
 export default {
-  name: 'Nav'
+  name: 'Nav',
+  components: {
+    Search
+  }
 }
 </script>
