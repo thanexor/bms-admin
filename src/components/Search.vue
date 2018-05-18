@@ -27,7 +27,8 @@ export default {
             search: "",
             results: [],
             totalPages: null,
-            totalResults: null
+            totalResults: null,
+            currentUser: null,
         }
     },
 

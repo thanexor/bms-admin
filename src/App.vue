@@ -25,16 +25,16 @@ import Scores from './components/Scores.vue'
 import Rules from './components/Rules.vue'
 
 export default {
-  name: 'App',
+    name: 'App',
 
-  components: {
-    Nav,
-    Upcoming,
-    List,
-    Watched,
-    Scores,
-    Rules
-  },
+    components: {
+        Nav,
+        Upcoming,
+        List,
+        Watched,
+        Scores,
+        Rules
+    }
 }
 </script>
 
