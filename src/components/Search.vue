@@ -2,7 +2,7 @@
     <section role="search" class="search">
 
         <div class="search__box">
-            <input class="input input--search search__box__input" type="search" placeholder="Search to add a movie" v-model="search" v-on:keyup="searchApi" v-on:focus="searchApi" />
+            <input id="js-search-field" class="input input--search search__box__input" type="search" placeholder="Search to add a movie" v-model="search" v-on:keyup="searchApi" v-on:focus="searchApi" />
         </div>
 
         <div class="search__results" v-bind:class="{ 'has-results': results.length > 0 && search.length > 0 }">

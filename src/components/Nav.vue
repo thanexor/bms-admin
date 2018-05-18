@@ -33,7 +33,10 @@ export default {
 
   methods: {
     logout: () => {
-      firebase.auth().signOut()
+      var definitelyLogout = !!confirm('Log out for real?');
+      if (definitelyLogout) {
+        firebase.auth().signOut()
+      }
     }
   },
 }

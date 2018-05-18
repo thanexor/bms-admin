@@ -1,6 +1,9 @@
 <template>
-    <div id='login'>
-        <button v-on:click='signin'>Google Sign-In</button>
+    <div id="login">
+        <div class="">
+            <button class="btn" v-on:click="signin">Sign in with Google</button>
+            <small>We don't read or store any personal data -- we just use it for authentication.</small>
+        </div>
     </div>
 </template>
 
