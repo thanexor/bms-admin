@@ -40,6 +40,7 @@ export default {
         },
 
         searchApi: function (e) {
+            console.log('cu', this.currentUser)
             if (e.target.value.length === 0) {
                 this.clearSearch();
             } else {
@@ -65,6 +66,9 @@ export default {
                 db.settings(settings);
 
                 var movies = db.collection('Movies');
+
+                movie.added_by = this.currentUser.uid;
+
                 movies.add(movie)
 
                 this.clearResults();
