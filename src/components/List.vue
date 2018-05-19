@@ -3,7 +3,7 @@
     <h2>To watch</h2>
 
     <ul class="backlog">
-        <li class="backlog__movie" v-for="movie in movies" v-bind:style="{ 'background-image': 'url(' + movie.backdrop_url + ')' }">
+        <li class="backlog__movie" v-for="movie in movies" v-bind:key=movie.id v-bind:style="{ 'background-image': 'url(' + movie.backdrop_url + ')' }">
             <button class="backlog__movie__control">{{ movie.title }}</button>
         </li>
 
@@ -39,7 +39,6 @@ export default {
                     movieDoc.backdrop_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
 
                     results.push(movieDoc);
-                    console.log(movieDoc);
                 });
             });
 

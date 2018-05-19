@@ -1,0 +1,43 @@
+.picks {
+    padding:    0;
+    margin:     0;
+    list-style: outside none;
+    display:    flex;
+    flex-wrap:  wrap;
+}
+
+.pick__card {
+    display: inline-block;
+    height:  300px;
+
+    &:not(:last-child) {
+        padding-right: 1em;
+    }
+}
+
+.pick__card__poster {
+    display: inline-block;
+    height:  100%;
+}
+
+.pick__card__info {
+    display:        inline-block;
+    vertical-align: top;
+
+    height:  100%;
+    padding: 0 2em;
+
+    background: $purple;
+    color:      $white;
+
+
+    header {
+        position:       relative;
+        vertical-align: top;
+
+        border-bottom: 1px solid $teal;
+
+        text-align:  center;
+        font-weight: bold;
+    }
+}

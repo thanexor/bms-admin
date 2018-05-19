@@ -40,7 +40,6 @@ export default {
         },
 
         searchApi: function (e) {
-            console.log('cu', this.currentUser)
             if (e.target.value.length === 0) {
                 this.clearSearch();
             } else {
