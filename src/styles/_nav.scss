@@ -3,6 +3,7 @@
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  align-items: center;
 }
 
 .site-title {
@@ -48,25 +49,26 @@
   a {
     position: relative;
     display: block;
-    padding: 20px 20px;
+    padding: 20px 10px;
     color: $white;
-    background-color: darken($purple, 2%);
+    font-weight: 400;
     text-decoration: none;
-    transition: background-color 100ms ease;
+    transition: background-color 200ms ease;
     z-index: 1;
     text-align: center;
+    font-size: .85em;
 
     &.active {
-      background-color: darken($purple, 10%);
+      // background-color: darken($purple, 10%);
     }
 
     &:hover {
-      background-color: lighten($purple, 4%);
+      background-color: lighten($teal, 4%);
     }
 
     &:focus,
     &:active {
-      background-color: darken($purple, 20%);
+      // background-color: darken($purple, 20%);
     }
 
   }
@@ -76,7 +78,14 @@
   flex-shrink: 1;
   flex-grow: 0;
   flex-basis: 30%;
+  padding-right: 30px;
 
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.logout {
+  margin-left: 20px;
 }

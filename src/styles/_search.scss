@@ -1,7 +1,6 @@
 .search {
     position: relative;
     color: $purple;
-    margin-bottom: 30px;
 }
 
 .search__results {
@@ -28,8 +27,11 @@
 }
 
 .search__result {
-    padding: .5em;
+    padding: 15px 5px 15px 60px;
     border-bottom: 1px solid $periwinkle;
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    background-position: 10px 10px;
 
     h5 {
         display: inline-block;

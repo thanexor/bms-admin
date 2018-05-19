@@ -20,6 +20,7 @@
   line-height: 1.1;
   font-weight: 600;
   cursor: pointer;
+  white-space: nowrap;
 
   transition:
     outline 200ms ease-in-out,
@@ -41,4 +42,14 @@
 
 .btn--full {
   width: 100%;
+}
+
+.btn--mini {
+  padding: 5px 10px;
+  min-width: auto;
+  background: none transparent;
+  border: 1px solid $teal;
+  border-radius: 2px;
+  color: $teal;
+  font-weight: 200;
 }

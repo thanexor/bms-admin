@@ -15,7 +15,7 @@
 
     <div class="user-actions">
       <Search/>
-      <button class="btn" v-on:click="logout">Log out</button>
+      <button class="btn btn--mini logout" v-on:click="logout">Log out</button>
     </div>
 
   </div>

@@ -7,7 +7,7 @@
 
         <div class="search__results" v-bind:class="{ 'has-results': results.length > 0 && search.length > 0 }">
             <ul>
-                <li class="search__result" v-for="(movie, index) in results" v-bind:key="movie.id">
+                <li class="search__result" v-for="(movie, index) in results" v-bind:key="movie.id" v-bind:style="{ 'background-image': 'url(https://image.tmdb.org/t/p/w92/'+ movie.poster_path +')' }">
                     <h5>{{movie.title}} <small>({{ new Date(movie.release_date).getFullYear() }})</small></h5>
                     <button class="search__result__add" v-on:click="addMovie(index)">Add</button>
                 </li>
