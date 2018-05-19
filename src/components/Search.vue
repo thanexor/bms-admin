@@ -66,9 +66,15 @@ export default {
 
                 var movies = db.collection('Movies');
 
-                movie.added_by = this.currentUser.uid;
-
-                movies.add(movie)
+                movies.where("id", "==", movie.id).limit(1).get().then(snapshot => {
+                    console.log('snap', snapshot)
+                    if (snapshot.empty) {
+                        movie.added_by = this.currentUser.uid;
+                        movies.add(movie)
+                    } else {
+                        alert(movie.title + ' already exists on the backlog.')
+                    }
+                });
 
                 this.clearResults();
                 this.search = '';
