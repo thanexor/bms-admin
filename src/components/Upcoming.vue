@@ -88,6 +88,30 @@
 
 <script>
 export default {
-  name: 'Upcoming'
+  name: 'Upcoming',
+  data: {
+    upcomingMovies: []
+  },
+  methods: {
+    fetchMovieData: function (movieId) {
+        fetch(`https://api.themoviedb.org/3/movie/{movieId}?api_key=fba97c7e6c8f93d931fe92ce8c7ac282&language=en-US`)
+        .then( (response) => {
+            return response.json();
+        })
+        .then((data) => {
+            console.log('found', data);
+            // this.upcomingMovies.push      = data.results.slice(0, 10),
+            // this.totalPages   = data.totalPages,
+            // this.totalResults = data.totalResults;
+        })
+    }
+  },
+  created: function () {
+    
+    // this.fetchMovieData(31130); // pass thru
+    // this.fetchMovieData(373841); // pass thru
+    // this.fetchMovieData(5753); // deadly prey
+    // this.fetchMovieData(50505); // low blow
+  }
 }
 </script>
