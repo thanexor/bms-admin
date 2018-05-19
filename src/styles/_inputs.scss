@@ -12,12 +12,15 @@
 	border-width: 0 0 1px 0;
 	padding-left: 0;
 	padding-right: 0;
-	min-width: 300px;
-	max-width: 500px;
 	transition:
 		border 300ms ease-in,
 		background 100ms ease-in,
 	;
+
+	@include media-up (tablet) {
+		min-width: 250px;
+		max-width: 500px;
+	}
 
 	&::-webkit-input-placeholder { color: rgba($white, .75); }
 	&:-ms-input-placeholder  { color: rgba($white, .75); }
