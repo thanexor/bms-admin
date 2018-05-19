@@ -24,43 +24,31 @@ body {
 
 * { box-sizing: border-box; }
 
-.col-side,
-.col-main {
-  padding: 0 30px;
-}
-
-.col-side {  
-  color: $white;
-  position: relative;
-
-  @include media-up(tablet) {
-    width: 300px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-  }
-
-  &::after {
-    content: '';
-    height: 300%;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    // background: none $purple;
-    // background: radial-gradient(circle at bottom right, #a770ef, #cf8bf3, #fdb99b);
-    background: radial-gradient(circle at top left, $purple, adjust-hue($purple, 50deg));
-    z-index: -1;
-  }
-}
-
-.col-main {
+.main {
   width: 100%;
   padding: 30px;
 
   @include media-up(tablet) {
-    padding-left: 330px;
+    padding-top: 150px;
+  }
+}
+
+.nav-wrap {  
+  color: $white;
+  position: relative;
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80vw;
+  transform: translate3d(-100%, 0, 0);
+  background: $purple;
+
+  @include media-up(tablet) {
+    width: 100%;
+    height: auto;
+    transform: none;
   }
 }
 

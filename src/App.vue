@@ -2,7 +2,7 @@
     <div id="app">
       <Nav/>
 
-      <div class="col-main">
+      <div class="main">
 
         <Upcoming />
         <List />

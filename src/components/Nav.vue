@@ -1,11 +1,9 @@
 <template>
 
-  <div class="col-side">
+  <div class="nav-wrap">
     <h1 class="site-title">Bad Movie Squad</h1>
 
-    <Search/>
-
-    <nav class="side-nav">
+    <nav class="nav">
       <ul>
         <li><a href="#upcoming">Upcoming</a></li>
         <li><a href="#backlog">List</a></li>
@@ -13,10 +11,13 @@
         <li><a href="#scoreboard">Scoreboard</a></li>
         <li><a href="#rules">Rules</a></li>
       </ul>
-      <div class="actions">
-        <button class="btn btn--full" v-on:click="logout">Log out</button>
-      </div>
     </nav>
+
+    <div class="user-actions">
+      <Search/>
+      <button class="btn" v-on:click="logout">Log out</button>
+    </div>
+
   </div>
 </template>
 
