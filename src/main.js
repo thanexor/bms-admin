@@ -11,7 +11,6 @@ import List from './components/List.vue'
 import Rules from './components/Rules.vue'
 import Scores from './components/Scores.vue'
 import Watched from './components/Watched.vue'
-import Picks from './components/Picks.vue'
 
 import * as firebase from 'firebase';
 

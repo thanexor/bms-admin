@@ -55,6 +55,11 @@
 }
 
 .movie__meta {
+  padding-left: 100px;
+  background-size: 80px auto;
+  background-repeat: no-repeat;
+  background-position: left top;
+  min-height: 120px;
   color: $white;
   font-size: .85rem;
 

@@ -1,16 +1,16 @@
 <template>
     <section class="subsection" id="upcoming">
-        <h2>Next up</h2>
+        <h2>Upcoming</h2>
         <div class="night">
             <div class="night__meta">
-                <h3>THE BREEN-ENING</h3>
+                <h3>Next Movie Night Title</h3>
                 <p>Wednesday, Junelygust 39th, 3005 @ Jackson's House</p>
             </div>
 
             <div class="movies">
         
-                <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }" v-bind:key="pick.id">
-                    <div class="movie__meta">
+                <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id">
+                    <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
                         <a href="https://www.imdb.com/title/tt1561457/">
                             <h4 class="movie__title">{{ pick.movie.title }} {{ new Date(pick.movie.release_date).getFullYear() }}</h4>
                         </a>
@@ -19,7 +19,7 @@
 
                     <div class="movie__ratings">
                         <div class="movie__ratings__listing">
-                            <h5>Loved:</h5>
+                            <h5>😍</h5>
                             <ul>
                                 <li>Thane</li>
                                 <li>Jackson</li>
@@ -28,7 +28,7 @@
                         </div>
 
                         <div class="movie__ratings__listing">
-                            <h5>Hated:</h5>
+                            <h5>😠</h5>
                             <ul>
                                 <li>Chris</li>
                                 <li>Larry</li>
@@ -36,7 +36,7 @@
                         </div>
 
                         <div class="movie__ratings__listing">
-                            <h5>Meh:</h5>
+                            <h5>😐</h5>
                             <ul>
                                 <li>Nobody!</li>
                             </ul>
@@ -83,7 +83,8 @@ export default {
 
                 displayPick.movie.get().then(movie => {
                     displayPick.movie = movie.data();
-                    displayPick.movie.poster_url = 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.poster_path;
+                    displayPick.movie.poster_url = 'https://image.tmdb.org/t/p/w92/' + displayPick.movie.poster_path;
+                    displayPick.movie.backdrop_url = displayPick.movie.backdrop_path !==null ? 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.backdrop_path : '';
                 })
 
                 displayPick.picker.get().then(picker => {

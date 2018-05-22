@@ -6,7 +6,7 @@
     <nav class="nav">
       <ul>
         <li><a href="#upcoming">Upcoming</a></li>
-        <li><a href="#backlog">List</a></li>
+        <li><a href="#backlog">To watch</a></li>
         <li><a href="#watched">Watched</a></li>
         <li><a href="#scoreboard">Scoreboard</a></li>
         <li><a href="#rules">Rules</a></li>
