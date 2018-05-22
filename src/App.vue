@@ -5,7 +5,6 @@
       <div class="main">
 
         <Upcoming />
-        <Picks />
         <List />
         <Watched />
         <Scores />
@@ -24,7 +23,6 @@ import List from './components/List.vue'
 import Watched from './components/Watched.vue'
 import Scores from './components/Scores.vue'
 import Rules from './components/Rules.vue'
-import Picks from './components/Picks.vue'
 
 export default {
     name: 'App',
@@ -35,8 +33,7 @@ export default {
         List,
         Watched,
         Scores,
-        Rules,
-        Picks
+        Rules
     }
 }
 </script>

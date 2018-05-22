@@ -43,9 +43,6 @@ export default {
                         movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
                     }
 
-                    console.log('returning', movieDoc.background_url);
-
-
                     results.push(movieDoc);
                 });
             });
