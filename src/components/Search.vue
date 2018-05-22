@@ -41,7 +41,7 @@ export default {
 
         searchApi: function (e) {
             if (e.target.value.length === 0) {
-                this.clearSearch();
+                this.clearResults();
             } else {
                 fetch(`https://api.themoviedb.org/3/search/movie?api_key=fba97c7e6c8f93d931fe92ce8c7ac282&language=en-US&query=${this.search}&page=1&include_adult=false`)
                 .then( (response) => {

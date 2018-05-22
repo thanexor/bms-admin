@@ -19,12 +19,12 @@
   &:nth-child(5n+1) { background-color: rgba($purple,.5); }
 
   @include media-up(tablet) {
-    width: 48%;
+    width: 31%;
     margin: 5px 0 0 5px;
   }
 
   @include media-up(standard) {
-    width: 31%;
+    width: 23%;
   }
 
   .backlog__movie__control {
