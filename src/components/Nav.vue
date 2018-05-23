@@ -16,8 +16,11 @@
     <div class="user-actions">
       <Search/>
 
-      <div class="user-actions__user">
-        
+      <div class="user-controls">
+        <div class="user-controls__user">
+          <img src="" v-bind:src="currentUser.photoURL" />
+          <span>{{ currentUser.displayName }}</span>
+        </div>
         <button class="btn btn--mini logout" v-on:click="logout">Log out</button>
       </div>
     </div>
@@ -36,6 +39,12 @@ export default {
     Search
   },
 
+  data: function () {
+    return {
+      currentUser: null,
+    }
+  },
+
   methods: {
     logout: () => {
       var definitelyLogout = !!confirm('Log out for real?');
@@ -44,5 +53,11 @@ export default {
       }
     }
   },
+
+  created: function () {
+    // this.currentUser = currentUser;
+    console.log('dad', this.currentUser);
+    //
+  }
 }
 </script>
