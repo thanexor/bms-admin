@@ -1,7 +1,8 @@
 <template>
 
   <div class="nav-wrap">
-    <h1 class="site-title">Bad Movie Squad</h1>
+    <!-- <h1 class="site-title">B<span>ad</span> M<span>ovie</span> S<span>quad</span></h1> -->
+    <h1 class="site-title">B<span>ad</span> M<span>ovie</span> S<span>quad</span></h1>
 
     <nav class="nav">
       <ul>
