@@ -1,36 +1,35 @@
 .input {
-	display: block;
-	width: 100%;
-	padding: .5em .75em;
-	border: 1px solid $purple;
+    display: block;
+    width: 100%;
+    padding: .5em .75em;
+    border: 1px solid $purple;
 }
 
 .input--search {
-	background: none transparent;
-	color: $white;
-	border: 1px solid $teal;
-	border-width: 0 0 1px 0;
-	padding-left: 0;
-	padding-right: 0;
-	transition:
-		border 300ms ease-in,
-		background 100ms ease-in,
-	;
+    background: none transparent;
+    color: $white;
+    border: 1px solid $teal;
+    border-width: 0 0 1px 0;
+    padding-left: 0;
+    padding-right: 0;
+    transition:
+        border 300ms ease-in,
+        background 100ms ease-in,
+    ;
 
-	@include media-up (tablet) {
-		min-width: 250px;
-		max-width: 500px;
-	}
+    @include media-up (tablet) {
+        max-width: 500px;
+    }
 
-	&::-webkit-input-placeholder { color: rgba($white, .75); }
-	&:-ms-input-placeholder  { color: rgba($white, .75); }
-	&::-ms-input-placeholder  { color: rgba($white, .75); }
-	&::placeholder { color: rgba($white, .75);	}
+    &::-webkit-input-placeholder { color: rgba($white, .75); }
+    &:-ms-input-placeholder  { color: rgba($white, .75); }
+    &::-ms-input-placeholder  { color: rgba($white, .75); }
+    &::placeholder { color: rgba($white, .75);  }
 
-	&:focus {
-		outline: 0;
-		border-bottom-color: adjust-hue($teal, 50deg);
-		// background-color: $white;
-		// color: $purple;
-	}
+    &:focus {
+        outline: 0;
+        border-bottom-color: adjust-hue($teal, 50deg);
+        // background-color: $white;
+        // color: $purple;
+    }
 }
