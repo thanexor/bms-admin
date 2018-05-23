@@ -20,6 +20,8 @@
 
 .movies {
   display: flex;
+  min-height: 400px;
+  background: rgba($babyblue, .25);
 }
 
 .movie {
@@ -40,7 +42,11 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(165deg, rgba(darken($teal, 30%), .98), rgba(darken($green, 30%), .75) 70%)
+    background: linear-gradient(165deg, rgba(darken($teal, 30%), .98), rgba(darken($green, 30%), .75) 70%);
+  }
+
+  &:first-child::after {
+    background: linear-gradient(165deg, rgba(darken($green, 30%), .98), rgba(darken($teal, 30%), .75) 70%);
   }
 }
 
@@ -61,18 +67,35 @@
   background-position: left top;
   min-height: 120px;
   color: $white;
-  font-size: .85rem;
-
-  a { color: $white; }
 
   p {
     margin: 0;
+
+    a {
+      color: $white;
+      font-weight: 700;
+    }
   }
 }
 
-.movie__title {
-  margin: 0 0 5px;
+.movie__head {
   font-size: 1.5rem;
+
+  h4 {
+    font-size: 1.5rem;
+    margin: 0 0 5px;
+    font-weight: 700;
+
+    a {
+      color: $white;
+    }
+  }
+
+  h3 {
+    margin: 5px 0 1em;
+    font-size: 1rem;
+    font-weight: 400;
+  }
 
   small {
     opacity: .65;

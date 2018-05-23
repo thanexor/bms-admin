@@ -1,7 +1,6 @@
 <template>
 
   <div class="nav-wrap">
-    <!-- <h1 class="site-title">B<span>ad</span> M<span>ovie</span> S<span>quad</span></h1> -->
     <h1 class="site-title">B<span>ad</span> M<span>ovie</span> S<span>quad</span></h1>
 
     <nav class="nav">
@@ -16,7 +15,11 @@
 
     <div class="user-actions">
       <Search/>
-      <button class="btn btn--mini logout" v-on:click="logout">Log out</button>
+
+      <div class="user-actions__user">
+        
+        <button class="btn btn--mini logout" v-on:click="logout">Log out</button>
+      </div>
     </div>
 
   </div>

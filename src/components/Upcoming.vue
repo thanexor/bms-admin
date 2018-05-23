@@ -3,20 +3,23 @@
         <h2>Upcoming</h2>
         <div class="night">
             <div class="night__meta">
-                <h3>Next Movie Night Title</h3>
-                <p>Wednesday, Junelygust 39th, 3005 @ Jackson's House</p>
+                <h3>LONLEY BOIS</h3>
+                <p>Thursday, May 24th, 2018 @ Jackson's House</p>
             </div>
 
             <div class="movies">
         
                 <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id">
                     <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">                        
-                        <h4 class="movie__title">
-                            <a href="https://www.imdb.com/title/tt1561457/">{{ pick.movie.title }}</a> <small>({{ new Date(pick.movie.release_date).getFullYear() }})</small></h4>
-                        <p>Picked by {{ pick.picker.displayName }}</p>
+                        <div class="movie__head">
+                            <h4><a href="https://www.imdb.com/title/tt1561457/">{{ pick.movie.title }}</a> <small>({{ new Date(pick.movie.release_date).getFullYear() }})</small></h4>
+                            <h3>Picked by {{ pick.picker.displayName }}</h3>
+                        </div>
+                        <p><a href="https://www.youtube.com/watch?v=9KUlVhQe8dQ" v-bind:href="pick.trailer_url">Trailer</a></p>
+                        <p><strong>Budget</strong>: N/A (lol)</p>
                     </div>
 
-                    <div class="movie__ratings">
+                    <!-- <div class="movie__ratings">
                         <div class="movie__ratings__listing">
                             <h5>😁</h5>
                             <ul>
@@ -41,7 +44,7 @@
                             </ul>
                         </div>
 
-                    </div>
+                    </div> -->
 
                 </div>
 

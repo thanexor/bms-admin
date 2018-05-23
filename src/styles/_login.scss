@@ -12,4 +12,13 @@
     max-width: 80%;
     color: $white;
   }
+
+  .site-title {
+    text-align: center;
+    font-size: 3rem;
+    padding-bottom: .5em;
+    border-bottom: 1px solid;
+    max-width: 500px;
+    margin: 0 auto .75em;
+  }
 }
