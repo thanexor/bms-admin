@@ -20,19 +20,29 @@
 
 .movies {
   display: flex;
-  min-height: 400px;
+  flex-direction: column;
+  min-height: 250px;
   background: rgba($babyblue, .25);
+
+  @include media-up (tablet) {
+    min-height: 300px;
+    flex-direction: row;
+  }
 }
 
 .movie {
-  width: 50%;
-  min-height: 400px;
+  min-height: 250px;
   padding: 30px;
   position: relative;
   flex-shrink: 1;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center center;
+
+  @include media-up (tablet) {
+    width: 50%;
+    min-height: 300px;
+  }
 
   // colored overlay
   &::after {

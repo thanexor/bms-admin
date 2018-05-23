@@ -3,7 +3,7 @@
         <h2>Upcoming</h2>
         <div class="night">
             <div class="night__meta">
-                <h3>LONLEY BOIS</h3>
+                <h3>LONELY BOIS</h3>
                 <p>Thursday, May 24th, 2018 @ Jackson's House</p>
             </div>
 
