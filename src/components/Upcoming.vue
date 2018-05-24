@@ -98,12 +98,6 @@ export default {
                     displayPick.picker = picker.data();
                 })
 
-                displayPick.user_points.forEach((userPoint, index) => {
-                    userPoint.user.get().then(user => {
-                        userPoint.user = user.data()
-                    })
-                })
-
                 this.picks.push(displayPick);
             })
         })
