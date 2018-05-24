@@ -82,7 +82,7 @@ export default {
         db.settings(settings);
 
 
-        db.collection('Picks').where("state", "==", "pending").get().then(picks => {
+        db.collection('Picks').where("state", "==", "active").get().then(picks => {
             picks.forEach(pick => {
                 var displayPick    = pick.data();
 
