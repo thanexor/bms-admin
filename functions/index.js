@@ -12,7 +12,7 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 });
 
 exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdate((change, context) => {
-    if (change.data().state == "closed") {
+    if (change.data().state === "closed") {
         // get picks from night
         // search for UserPicks that match the picks
         // from the user pick subtract the pick points from the user's total points
@@ -28,4 +28,23 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
 
 exports.toggleAttendance = functions.https.onCall((data, context) => {
     const uid = context.auth.uid;
+    return { isAttending: true };
+});
+
+exports.getAttendance = functions.https.onCall((data, context) => {
+    const uid     = context.auth.uid
+    const nightId = data.nightId
+
+    return admin.firestore().collection('Nights').doc(nightId).get().then(night => {
+        var attendeeRefs   = night.data().attendees,
+            attendeeIds = [];
+
+        attendeeRefs.forEach(function(attendeeRef) {
+            attendeeIds.push(attendeeRef.ref.segments[1])
+        });
+
+        console.info('User ' + uid + ' attending? ' + attendeeIds.includes(uid))
+        return { isAttending: attendeeIds.includes(uid) };
+    })
+
 });

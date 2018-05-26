@@ -74,12 +74,13 @@ export default {
                 location: '',
             },
             isAttending: false,
+            isAttendingText: "Join",
         }
     },
 
-    computed: {
-        isAttendingText: () => {
-            return this.isAttending ? 'Leave' : 'Join';
+    watch: {
+        isAttending: function () {
+            this.isAttendingText = this.isAttending ? 'Leave' : 'Join';
         }
     },
 
@@ -87,10 +88,10 @@ export default {
     },
 
     methods: {
-        toggleAttendance: () => {
+        toggleAttendance: function () {
             const toggle = firebase.functions().httpsCallable('toggleAttendance');
             toggle().then(result => {
-                this.isAttending = result.isAttending;
+                this.isAttending = result.data.isAttending;
             })
         }
 
@@ -127,6 +128,12 @@ export default {
             nights.forEach(night => {
                 this.night = night.data();
 
+                console.log('this.night', night);
+                const attendance = firebase.functions().httpsCallable('getAttendance');
+                attendance({nightId: night.id}).then(result => {
+                    this.isAttending = result.data.isAttending;
+                })
+
                 var date = new Date(null);
                 date.setTime(this.night.date.seconds*1000);
 
@@ -138,9 +145,9 @@ export default {
                     minute: "2-digit"
                 });
             });
-        });;
+        });
 
-        console.log('this', this);
+
     }
 }
 </script>
