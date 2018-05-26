@@ -26,3 +26,6 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
     }
 });
 
+exports.toggleAttendance = functions.https.onCall((data, context) => {
+    const uid = context.auth.uid;
+});

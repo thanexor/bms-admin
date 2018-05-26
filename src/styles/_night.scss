@@ -5,7 +5,8 @@
   color: $white;
 }
 
-.night__meta {
+.night__meta__info {
+  display: inline-block;
   padding: 20px 30px;
 
   h3 {
@@ -16,6 +17,11 @@
   p {
     margin: 0;
   }
+}
+
+.night__meta__actions {
+  padding: 20px 30px;
+  float: right;
 }
 
 .movies {

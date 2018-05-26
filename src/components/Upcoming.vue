@@ -3,8 +3,13 @@
         <h2>Upcoming</h2>
         <div class="night">
             <div class="night__meta">
-                <h3>{{night.title}}</h3>
-                <p>{{night.date}} @ {{night.location}}</p>
+                <div class="night__meta__info">
+                    <h3>{{night.title}}</h3>
+                    <p>{{night.date}} @ {{night.location}}</p>
+                </div>
+                <div class="night__meta__actions">
+                    <button class="night__action--join" v-on:click="toggleAttendance">{{isAttendingText}}</button>
+                </div>
             </div>
 
             <div class="movies">
@@ -68,6 +73,13 @@ export default {
                 date:     '',
                 location: '',
             },
+            isAttending: false,
+        }
+    },
+
+    computed: {
+        isAttendingText: () => {
+            return this.isAttending ? 'Leave' : 'Join';
         }
     },
 
@@ -75,6 +87,13 @@ export default {
     },
 
     methods: {
+        toggleAttendance: () => {
+            const toggle = firebase.functions().httpsCallable('toggleAttendance');
+            toggle().then(result => {
+                this.isAttending = result.isAttending;
+            })
+        }
+
     },
 
     created() {
