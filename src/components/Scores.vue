@@ -6,15 +6,16 @@
                 <th>Participant</th>
                 <th class="scoreboard__score scoreboard__score--head">Points</th>
             </tr>
-            <tr>
+
+            <tr v-for="user in users" v-bind:key=user.uid>
                 <td>
-                    <h4>Thane</h4>
+                    <h4>{{user.displayName}}</h4>
                     <p>Has made 5 picks</p>
                     <p>Last picked Road House on Apr 20, 2018</p>
                 </td>
-                <td class="scoreboard__score">3</td>
+                <td class="scoreboard__score">{{user.total_points}}</td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>
                     <h4>Jackson</h4>
                     <p>Has made 5 picks</p>
@@ -93,13 +94,33 @@
                     <p>Last picked Road House on Apr 20, 2018</p>
                 </td>
                 <td class="scoreboard__score">3</td>
-            </tr>
+            </tr> -->
         </table>
     </section>
 </template>
 
 <script>
+import firebase from 'firebase'
+
 export default {
-  name: 'Scores'
+    name: 'Scores',
+
+    data() {
+        return {
+            users: []
+        }
+    },
+
+    created() {
+        const db = firebase.firestore();
+        const settings = {timestampsInSnapshots: true};
+        db.settings(settings);
+
+        db.collection('Users').orderBy("total_points", "desc").get().then(users => {
+            users.forEach(user => {
+                this.users.push(user.data())
+            })
+        });
+    }
 }
 </script>
