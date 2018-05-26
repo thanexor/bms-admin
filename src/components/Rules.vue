@@ -13,12 +13,6 @@
             <li>Picks can be outbid by adding an additional point (if you hate the movie or whatever)</li>
             <li>Pick spots are made on a first-come-first-serve basis</li>
         </ul>
-
-        <h3>MOVIE LIST</h3>
-        <ul>
-            <li>Movies should be picked from The List</li>
-            <li>Just message Thane to get a movie added!</li>
-        </ul>
     </section>
 </template>
 

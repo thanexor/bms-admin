@@ -98,6 +98,12 @@
 
     a {
       color: $white;
+
+      &:hover {
+        + small {
+          left: 14px;
+        }
+      }
     }
   }
 
@@ -111,6 +117,9 @@
     opacity: .65;
     font-weight: 200;
     margin-left: .5em;
+    position: relative;
+    left: 0;
+    transition: left 200ms ease-out;
   }
 }
 

@@ -12,11 +12,12 @@
                 <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id">
                     <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
                         <div class="movie__head">
-                            <h4><a href="https://www.imdb.com/title/tt1561457/">{{ pick.movie.title }}</a> <small>({{ new Date(pick.movie.release_date).getFullYear() }})</small></h4>
+                            <h4><a href="" v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a> <small>({{ new Date(pick.movie.release_date).getFullYear() }})</small></h4>
                             <h3>Picked by {{ pick.picker.displayName }}</h3>
                         </div>
                         <p><a v-bind:href="pick.trailer_url">Trailer</a></p>
                         <p><strong>Budget</strong>: N/A (lol)</p>
+                        <p><strong>Point cost</strong>: {{ pick.total_points }}</p>
                     </div>
 
                     <!-- <div class="movie__ratings">
@@ -90,6 +91,7 @@ export default {
 
                 displayPick.movie.get().then(movie => {
                     displayPick.movie = movie.data();
+                    displayPick.movie.url = "https://www.themoviedb.org/movie/" + displayPick.movie.id;
                     displayPick.movie.poster_url = 'https://image.tmdb.org/t/p/w92/' + displayPick.movie.poster_path;
                     displayPick.movie.backdrop_url = displayPick.movie.backdrop_path !==null ? 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.backdrop_path : '';
                 })
@@ -116,8 +118,8 @@ export default {
                     hour:"2-digit",
                     minute: "2-digit"
                 });
-            })
-        })
+            });
+        });;
 
         console.log('this', this);
     }
