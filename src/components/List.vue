@@ -1,10 +1,13 @@
 <template>
     <section class="subsection" id="backlog">
-    <h2>To watch</h2>
+    <h2>To watch <small>({{ movies.length }} movies)</small></h2>
 
     <ul class="backlog">
         <li class="backlog__movie" v-for="movie in movies" v-bind:key=movie.id v-bind:style="{ 'background-image': 'url(' + movie.background_url + ')' }">
-            <button class="backlog__movie__control">{{ movie.title }}</button>
+            <div class="backlog__movie__meta">
+                <h3><a v-bind:href="movie.url">{{ movie.title }}</a></h3>
+            </div>
+            <button class="backlog__movie__control" v-on:click="makePick">Pick</button>
         </li>
 
         <li class="backlog__movie backlog__movie--add">
@@ -35,6 +38,8 @@ export default {
                 querySnapshot.forEach(function(doc) {
                     var movieDoc = doc.data();
 
+                    movieDoc.url = "https://www.themoviedb.org/movie/" + movieDoc.id;
+
                     // Probably a better way to do this
                     if (movieDoc.backdrop_path === null) {
                         movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.poster_path;
@@ -52,6 +57,9 @@ export default {
         addFromList: function () {
             var searchField = document.getElementById('js-search-field');
             searchField.focus();
+        },
+        makePick: function () {
+            alert("Sorry, we haven't written this part yet. :(");
         }
     },
     created: function () {

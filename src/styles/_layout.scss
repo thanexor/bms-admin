@@ -61,5 +61,11 @@ body {
 
   h2 {
     margin: 0 0 .5em;
+
+    small {
+      font-size: 65%;
+      opacity: .25;
+      margin-left: .35em;
+    }
   }
 }

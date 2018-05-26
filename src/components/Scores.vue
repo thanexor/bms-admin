@@ -10,8 +10,8 @@
             <tr v-for="user in users" v-bind:key=user.uid>
                 <td>
                     <h4>{{user.displayName}}</h4>
-                    <p>Has made 5 picks</p>
-                    <p>Last picked Road House on Apr 20, 2018</p>
+                    <p>Has made X picks</p>
+                    <p>Last picked Movie XYZ on Apr 20, 2018</p>
                 </td>
                 <td class="scoreboard__score">{{user.total_points}}</td>
             </tr>
