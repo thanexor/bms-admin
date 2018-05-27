@@ -6,7 +6,7 @@
         <li class="backlog__movie" v-for="movie in movies" v-bind:key=movie.id v-bind:style="{ 'background-image': 'url(' + movie.background_url + ')' }">
             <div class="backlog__movie__meta">
                 <h3><a v-bind:href="movie.url" rel="external">{{ movie.title }}</a></h3>
-                <p>Added by XXXX</p>
+                <p>Added by {{ movie.added_by_name }}</p>
             </div>
             <button class="backlog__movie__control" v-on:click="makePick">Pick</button>
         </li>
@@ -26,7 +26,8 @@ export default {
 
     data: function () {
         return {
-            movies: []
+            movies: [],
+            currentUser: null,
         }
     },
 
@@ -40,12 +41,11 @@ export default {
 
                     var movieDoc = doc.data();
 
-                    // db.collection('Users').where("uid", "==", movieDoc.added_by).get().then(function(querySnapshot) {
-                    //     querySnapshot.forEach(function(user) {
-                    //         var userData = user.data();
-                    //         movieDoc.added_by_name = userData.displayName;
-                    //     });
-                    // });
+                    db.collection('Users').doc(movieDoc.added_by).get().then(function(querySnapshot) {
+                        var userData = querySnapshot.data();
+                        movieDoc.added_by_name = userData.displayName;
+
+                    });
 
                     movieDoc.url = "https://www.themoviedb.org/movie/" + movieDoc.id;
 
@@ -53,7 +53,7 @@ export default {
                     if (movieDoc.backdrop_path === null) {
                         movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.poster_path;
                     } else {
-                        
+
                         movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
                     }
 
