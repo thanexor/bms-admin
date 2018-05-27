@@ -41,23 +41,22 @@ export default {
 
                     var movieDoc = doc.data();
 
-                    db.collection('Users').doc(movieDoc.added_by).get().then(function(querySnapshot) {
-                        var userData = querySnapshot.data();
-                        movieDoc.added_by_name = userData.displayName;
-
-                    });
-
                     movieDoc.url = "https://www.themoviedb.org/movie/" + movieDoc.id;
 
                     // Probably a better way to do this
                     if (movieDoc.backdrop_path === null) {
                         movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.poster_path;
                     } else {
-
                         movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
                     }
 
-                    results.push(movieDoc);
+                    db.collection('Users').doc(''+movieDoc.added_by).get().then(function(querySnapshot) {
+                        var userData = querySnapshot.data();
+                        movieDoc['added_by_name'] = userData.displayName;
+
+                        // Only push after this finishes
+                        results.push(movieDoc);
+                    });
                 });
             });
 
