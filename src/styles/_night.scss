@@ -5,8 +5,13 @@
   color: $white;
 }
 
+.night__meta {
+  display: flex;
+  flex-direction: row;
+}
+
 .night__meta__info {
-  display: inline-block;
+  flex-basis: 85%;
   padding: 20px 30px;
 
   h3 {
@@ -21,7 +26,8 @@
 
 .night__meta__actions {
   padding: 20px 30px;
-  float: right;
+  flex-basis: 15%;
+  text-align: right;
 }
 
 .movies {
