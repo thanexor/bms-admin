@@ -52,7 +52,7 @@ export default {
 
                     db.collection('Users').doc(''+movieDoc.added_by).get().then(function(querySnapshot) {
                         var userData = querySnapshot.data();
-                        movieDoc['added_by_name'] = userData.displayName;
+                        movieDoc.added_by_name = userData.displayName;
 
                         // Only push after this finishes
                         results.push(movieDoc);
