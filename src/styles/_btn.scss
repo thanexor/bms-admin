@@ -49,7 +49,27 @@
   min-width: auto;
   background: none transparent;
   border: 1px solid $teal;
+  text-shadow: none;
   border-radius: 2px;
   color: $teal;
-  font-weight: 200;
+  font-weight: 400;
+
+  transition:
+    border-color 100ms ease-in,
+    color 50ms ease-in;
+
+  &:hover {
+    border-color: $white;
+    color: $white;
+  }
+}
+
+.btn--mini--light {
+  border-color: $green;
+  color: $green;
+
+  // &:hover {
+  //   border-color: $white;
+  //   color: $white;
+  // }
 }

@@ -8,14 +8,12 @@
                     <p>{{night.date}} @ {{night.location}}</p>
                 </div>
                 <div class="night__meta__actions">
-                    <button class="night__action--join btn btn--mini" v-on:click="toggleAttendance">{{isAttendingText}}</button>
+                    <button class="night__action--join btn btn--mini btn--mini--light" v-on:click="toggleAttendance">{{isAttendingText}}</button>
                 </div>
             </div>
 
             <div class="movies">
-
                 
-
                 <!-- ACTUAL PICKS -->
                 <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id">
                     <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
