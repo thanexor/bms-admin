@@ -14,6 +14,9 @@
 
             <div class="movies">
 
+                
+
+                <!-- ACTUAL PICKS -->
                 <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id">
                     <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
                         <div class="movie__head">
@@ -54,6 +57,23 @@
 
                 </div>
 
+                <!-- SHOW OPEN SLOTS -->
+                <div class="movie movie--slot" v-if="picks.length !== night.slots" v-for="item in openSlots" v-bind:data-wut="(night.slots - picks.length)">
+                    <div class="movie__meta">
+                        <h4>
+                            <span v-if="openSlots.length === 1">One slot left!</span>
+                            <span v-else>Pick slot open!</span>
+                        </h4>
+                        
+                        <p v-if="currentUser.total_points >= 3">
+                                <strong>{{ currentUser.total_points }} points:</strong> You can afford a pick this week
+                            </p>
+                        <p v-if="currentUser.total_points < 3">
+                            <strong>Only {{ currentUser.total_points }} point<span v-if="currentUser.total_points !== 1">s</span> :</strong>
+                            You can't afford a pick this week :(</p>
+                    </div>
+                </div>
+
             </div>
 
         </div>
@@ -73,8 +93,10 @@ export default {
                 date:     '',
                 location: '',
             },
+            openSlots: [],
             isAttending: false,
             isAttendingText: "Join",
+            currentUser: null,
         }
     },
 
@@ -144,6 +166,12 @@ export default {
                     hour:"2-digit",
                     minute: "2-digit"
                 });
+
+
+                console.log('night', this.night);
+                console.log('picks', this.picks.length);
+
+                this.openSlots = new Array(this.night.slots - this.picks.length).fill(undefined);
             });
         });
 
