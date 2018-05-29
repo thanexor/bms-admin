@@ -58,13 +58,13 @@
                 </div>
 
                 <!-- SHOW OPEN SLOTS -->
-                <div class="movie movie--slot" v-if="picks.length !== night.slots" v-for="item in openSlots" v-bind:data-wut="(night.slots - picks.length)">
+                <div class="movie movie--slot" v-if="picks.length !== night.slots" v-for="item in openSlots">
                     <div class="movie__meta">
                         <h4>
                             <span v-if="openSlots.length === 1">One slot left!</span>
                             <span v-else>Pick slot open!</span>
                         </h4>
-                        
+
                         <p v-if="currentUser.total_points >= 3">
                                 <strong>{{ currentUser.total_points }} points:</strong> You can afford a pick this week
                             </p>
