@@ -5,8 +5,13 @@
   color: $white;
 }
 
+.night__meta {
+  display: flex;
+  flex-direction: row;
+}
+
 .night__meta__info {
-  display: inline-block;
+  flex-basis: 85%;
   padding: 20px 30px;
 
   h3 {
@@ -21,7 +26,8 @@
 
 .night__meta__actions {
   padding: 20px 30px;
-  float: right;
+  flex-basis: 15%;
+  text-align: right;
 }
 
 .movies {
@@ -37,7 +43,6 @@
 }
 
 .movie {
-  min-height: 250px;
   padding: 30px;
   position: relative;
   flex-shrink: 1;
@@ -152,5 +157,40 @@
 
   li + li {
     margin-top: 3px;
+  }
+}
+
+.movie--slot {
+  background: none transparent;
+  padding: 1.5vw;
+
+  h4 {
+    font-size: 1.5em;
+  }
+
+  &::after {
+    display: none;
+  }
+
+  .movie__meta {
+    padding: 1.25vw 4vw 2vw;
+    border-radius: 3px;
+    box-shadow:
+      inset 0 0 0 3px rgba($babyblue, .75),
+            0 0 5px 0 rgba($babyblue, .5),
+      inset 0 0 5px 2px rgba($white, .65),
+      inset 0 0 25px 0 rgba($babyblue, .25),
+      inset 0 0 35px 0 rgba($babyblue, .5);
+    height: 100%;
+
+    p {
+      margin-top: 1em;
+      font-size: 85%;
+
+      strong {
+        display: block;
+        font-size: 125%;
+      }
+    }
   }
 }

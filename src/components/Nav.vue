@@ -30,7 +30,7 @@
         <div class="user-controls">
           <div class="user-controls__user">
             <img src="" v-bind:src="currentUser.photoURL" />
-            <span>{{ currentUser.displayName }}</span>
+            <span>{{ currentUser.displayName }} -- <small>{{ currentUser.total_points }} pts</small></span>
           </div>
           <button class="btn btn--mini logout" v-on:click="logout">Log out</button>
         </div>
