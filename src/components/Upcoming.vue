@@ -89,8 +89,12 @@ export default {
 
     methods: {
         toggleAttendance: function () {
+            const data = {
+                nightId: this.night.id
+            };
+            console.log('triggering', this.night);
             const toggle = firebase.functions().httpsCallable('toggleAttendance');
-            toggle().then(result => {
+            toggle(data).then(result => {
                 this.isAttending = result.data.isAttending;
             })
         }
@@ -126,9 +130,9 @@ export default {
 
         db.collection('Nights').where("state", "==", "pending").get().then(nights => {
             nights.forEach(night => {
-                this.night = night.data();
+                this.night    = night.data()
+                this.night.id = night.id
 
-                console.log('this.night', night);
                 const attendance = firebase.functions().httpsCallable('getAttendance');
                 attendance({nightId: night.id}).then(result => {
                     this.isAttending = result.data.isAttending;

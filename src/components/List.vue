@@ -8,7 +8,7 @@
                 <h3><a v-bind:href="movie.url" rel="external">{{ movie.title }}</a></h3>
                 <p>Added by XXXX</p>
             </div>
-            <button class="backlog__movie__control" v-on:click="makePick">Pick</button>
+            <button class="backlog__movie__control" v-on:click="makePick(movie.id)">Pick</button>
         </li>
 
         <li class="backlog__movie backlog__movie--add">
@@ -53,7 +53,7 @@ export default {
                     if (movieDoc.backdrop_path === null) {
                         movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.poster_path;
                     } else {
-                        
+
                         movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
                     }
 
@@ -67,8 +67,15 @@ export default {
             var searchField = document.getElementById('js-search-field');
             searchField.focus();
         },
-        makePick: function () {
-            alert("Sorry, we haven't written this part yet. :(");
+        makePick: function (movieId) {
+            const data = {
+                movieId: movieId
+            }
+
+            const makePick = firebase.functions().httpsCallable('makePick');
+            makePick(data).then(result => {
+                console.log('result', XPathResult)
+            })
         }
     },
     created: function () {
