@@ -8,7 +8,7 @@
                 <h3><a v-bind:href="movie.url" rel="external">{{ movie.title }}</a></h3>
                 <p>Added by {{ movie.added_by_name }}</p>
             </div>
-            <button class="backlog__movie__control" v-on:click="makePick(movie.id)">Pick</button>
+            <button class="backlog__movie__control" v-on:click="makePick(movie)">Pick</button>
         </li>
 
         <li class="backlog__movie backlog__movie--add">
@@ -41,7 +41,8 @@ export default {
 
                     var movieDoc = doc.data();
 
-                    movieDoc.url = "https://www.themoviedb.org/movie/" + movieDoc.id;
+                    movieDoc.url    = "https://www.themoviedb.org/movie/" + movieDoc.id;
+                    movieDoc.baseId = doc.id;
 
                     // Probably a better way to do this
                     if (movieDoc.backdrop_path === null) {
@@ -66,9 +67,9 @@ export default {
             var searchField = document.getElementById('js-search-field');
             searchField.focus();
         },
-        makePick: function (movieId) {
+        makePick: function (movie) {
             const data = {
-                movieId: movieId
+                movieId: movie.baseId
             }
 
             const makePick = firebase.functions().httpsCallable('makePick');

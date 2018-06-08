@@ -102,8 +102,8 @@ exports.makePick = functions.https.onCall((data, context) => {
           movieId  = data.movieId
 
     return admin.firestore().collection('Picks').add({
-        movie: '/Movies/' + movieId,
-        picker: '/Users/' + uid,
+        movie: admin.firestore().collection('Movies').doc(movieId),
+        picker: admin.firestore().collection('Users').doc(uid),
         state: "pending",
         total_points: 3
     }).then(() => {
