@@ -36,7 +36,7 @@ export default {
             var db   = firebase.firestore(),
                 results = [];
 
-            db.collection("Movies").get().then(function(querySnapshot) {
+            db.collection("Movies").orderBy('title', 'asc').get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
 
                     var movieDoc = doc.data();
