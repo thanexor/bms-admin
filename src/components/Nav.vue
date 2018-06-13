@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    
+
   </div>
 </template>
 
@@ -72,8 +72,6 @@ export default {
 
   created: function () {
     // this.currentUser = currentUser;
-    console.log('dad', this.currentUser);
-    //
   }
 }
 </script>

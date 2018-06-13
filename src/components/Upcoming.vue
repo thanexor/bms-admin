@@ -13,7 +13,7 @@
             </div>
 
             <div class="movies">
-                
+
                 <!-- ACTUAL PICKS -->
                 <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id">
                     <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
@@ -112,7 +112,6 @@ export default {
             const data = {
                 nightId: this.night.id
             };
-            console.log('triggering', this.night);
             const toggle = firebase.functions().httpsCallable('toggleAttendance');
             toggle(data).then(result => {
                 this.isAttending = result.data.isAttending;
@@ -168,10 +167,6 @@ export default {
                     hour:"2-digit",
                     minute: "2-digit"
                 });
-
-
-                console.log('night', this.night);
-                console.log('picks', this.picks.length);
 
                 this.openSlots = new Array(this.night.slots - this.picks.length).fill(undefined);
             });

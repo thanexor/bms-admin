@@ -18,6 +18,7 @@
 
 <script>
 import firebase from 'firebase'
+import Webhooks from 'webhook-discord'
 
 export default {
     name: 'Search',
@@ -29,6 +30,7 @@ export default {
             totalPages: null,
             totalResults: null,
             currentUser: null,
+            DiscordWebhook: null,
         }
     },
 
@@ -58,7 +60,8 @@ export default {
         addMovie: function (index) {
             var movie = this.results[index],
                 add   = !!confirm('Are you sure you want to add ' + movie.title + ' to the backlog?'),
-                db    = firebase.firestore();
+                db    = firebase.firestore(),
+                DiscordWebhook = new Webhooks('https://discordapp.com/api/webhooks/453606494211145754/2wJ8WnoGLKsoBEMrvBCKkkVtZcfu_tkjbs7iJQ1p9Z4296DkTpD-5Vxyl0SM9vUx3u3C');
 
             if (add) {
                 const settings = {timestampsInSnapshots: true};
@@ -67,7 +70,6 @@ export default {
                 var movies = db.collection('Movies');
 
                 movies.where("id", "==", movie.id).limit(1).get().then(snapshot => {
-                    console.log('snap', snapshot)
                     if (snapshot.empty) {
                         movie.added_by = this.currentUser.uid;
                         movies.add(movie)
@@ -76,10 +78,15 @@ export default {
                     }
                 });
 
+                DiscordWebhook.custom("WILLARD THE ROBOT COP", "" + movie.title + " was just added by " + this.currentUser.displayName, "NEW BACKLOG MOVIE", "#f0407b")
+
                 this.clearResults();
                 this.search = '';
             }
         }
+    },
+    created: function () {
+        //
     }
 }
 </script>
