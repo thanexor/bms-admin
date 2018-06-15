@@ -6,8 +6,8 @@
 
         <Upcoming />
         <List />
-        <Watched />
         <Scores />
+        <Watched />
         <Rules />
 
       </div>
