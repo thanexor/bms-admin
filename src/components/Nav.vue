@@ -55,7 +55,9 @@ export default {
   data: function () {
     return {
       isBurgerOpen: false,
-      currentUser: null,
+      currentUser: {
+        admin: false
+      }
     }
   },
 

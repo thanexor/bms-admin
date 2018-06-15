@@ -152,10 +152,10 @@ export default {
                 this.night    = night.data()
                 this.night.id = night.id
 
-                const attendance = firebase.functions().httpsCallable('getAttendance');
-                attendance({nightId: night.id}).then(result => {
-                    this.isAttending = result.data.isAttending;
-                })
+                // const attendance = firebase.functions().httpsCallable('getAttendance');
+                // attendance({nightId: night.id}).then(result => {
+                //     this.isAttending = result.data.isAttending;
+                // })
 
                 var date = new Date(null);
                 date.setTime(this.night.date.seconds*1000);
