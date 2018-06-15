@@ -37,8 +37,12 @@
   background: rgba($babyblue, .25);
 
   @include media-up (tablet) {
-    min-height: 300px;
+    min-height: calc(16vw + 100px); // yolo, it's 2018
     flex-direction: row;
+
+     &.movies--flow {
+      flex-wrap: wrap;
+    }
   }
 }
 
@@ -52,7 +56,7 @@
 
   @include media-up (tablet) {
     width: 50%;
-    min-height: 300px;
+    min-height: calc(16vw + 120px); // yolo, it's 2018
   }
 
   // colored overlay

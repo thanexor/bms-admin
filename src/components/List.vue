@@ -6,7 +6,7 @@
         <li class="backlog__movie" v-for="movie in movies" v-bind:key=movie.id v-bind:style="{ 'background-image': 'url(' + movie.background_url + ')' }">
             <div class="backlog__movie__meta">
                 <h3><a v-bind:href="movie.url" rel="external">{{ movie.title }}</a></h3>
-                <p>Added by {{ movie.added_by_name }}</p>
+                <p v-bind:data-id="movie.added_by_id">Added by {{ movie.added_by_name }}</p>
             </div>
             <button class="backlog__movie__control" v-on:click="makePick(movie)">Pick</button>
         </li>
@@ -53,7 +53,9 @@ export default {
 
                     db.collection('Users').doc(''+movieDoc.added_by).get().then(function(querySnapshot) {
                         var userData = querySnapshot.data();
+
                         movieDoc.added_by_name = userData.displayName;
+                        movieDoc.added_by_id = userData.uid;
 
                         // Only push after this finishes
                         results.push(movieDoc);

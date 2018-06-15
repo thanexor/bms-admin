@@ -13,6 +13,19 @@
             <li>Picks can be outbid by adding an additional point (if you hate the movie or whatever)</li>
             <li>Pick spots are made on a first-come-first-serve basis</li>
         </ul>
+
+        <h2>Admin</h2>
+        <div>
+            <h3>Current night: Doom, Lifeforce</h3>
+            <h3>Attendees &amp; ratings:</h3>
+            <ul class="list-inline">
+                <li>Thane -- 😐, 😐</li>
+                <li>Larry -- 😐, 😐</li>
+                <li>Chris -- <strong>none!</strong></li>
+                <li>Jackson -- 😐, 😐</li>
+            </ul>
+            <button class="btn btn--mini">Complete night &amp; create next week</button>
+        </div>
     </section>
 </template>
 
