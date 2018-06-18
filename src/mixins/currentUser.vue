@@ -18,7 +18,7 @@ Vue.mixin({
             userRef.get().then((user) => {
                 console.log('auth', authUser.providerData);
                 if (!user.exists) {
-                    userRef.set(authUser.providerData[0].email).then(() => {
+                    userRef.set(authUser.providerData[0]).then(() => {
                         console.log('User Data', userRef)
                         userRef.update({admin: false}).then(() => {
                             userRef.get().then((user) => {
