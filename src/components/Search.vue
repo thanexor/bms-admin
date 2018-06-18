@@ -71,7 +71,7 @@ export default {
 
                 movies.where("id", "==", movie.id).limit(1).get().then(snapshot => {
                     if (snapshot.empty) {
-                        movie.added_by = this.currentUser.uid;
+                        movie.added_by = this.currentUser.email;
                         movies.add(movie)
                     } else {
                         alert(movie.title + ' already exists on the backlog.')
