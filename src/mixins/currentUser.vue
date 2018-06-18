@@ -8,17 +8,18 @@ Vue.mixin({
 
         if (authUser) {
             var db   = firebase.firestore(),
-                uid = String(authUser.providerData[0].uid);
+                email = String(authUser.providerData[0].email);
 
             const settings = {timestampsInSnapshots: true};
             db.settings(settings);
 
-            var userRef = db.collection('Users').doc(uid);
+            var userRef = db.collection('Users').doc(email);
 
             userRef.get().then((user) => {
                 console.log('auth', authUser.providerData);
                 if (!user.exists) {
                     userRef.set(authUser.providerData[0].email).then(() => {
+                        console.log('User Data', userRef)
                         userRef.update({admin: false}).then(() => {
                             userRef.get().then((user) => {
                                 this.$data.currentUser = user.data()
