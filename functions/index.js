@@ -58,7 +58,7 @@ exports.getAttendance = functions.https.onCall((data, context) => {
 });
 
 exports.makePick = functions.https.onCall((data, context) => {
-    const uid      = context.auth.uid,
+    const email      = context.auth.email,
           movieId  = data.movieId
 
     var movie = admin.firestore().collection('Movies').doc(movieId)
@@ -66,7 +66,7 @@ exports.makePick = functions.https.onCall((data, context) => {
     console.log('Auth', context.auth);
     return admin.firestore().collection('Picks').add({
         movie: admin.firestore().collection('Movies').doc(movieId),
-        picker: admin.firestore().collection('Users').doc(uid),
+        picker: admin.firestore().collection('Users').doc(email),
         state: "pending",
         total_points: 3
     }).then(() => {
