@@ -76,7 +76,7 @@ export default {
 
             const makePick = firebase.functions().httpsCallable('makePick');
             makePick(data).then(result => {
-                console.log('result', XPathResult)
+                console.log('result', result)
             })
         }
     },

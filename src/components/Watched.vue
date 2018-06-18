@@ -2,12 +2,12 @@
     <section class="subsection" id="watched">
         <h2>Watched <small>(in progress)</small></h2>
         <div class="movies movies--flow">
-                
+
             <!-- ACTUAL PICKS -->
             <div class="movie" v-for="pick in watchedPicks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id" v-bind:data-id="pick.id">
                 <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
                     <div class="movie__head">
-                        <h4><a href="" v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a> <small>({{ new Date(pick.movie.release_date).getFullYear() }})</small></h4>
+                        <h4><a v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a> <small>({{ new Date(pick.movie.release_date).getFullYear() }})</small></h4>
                         <!-- <h3>Picked by {{ pick.picker.displayName }}</h3> -->
                     </div>
                     <p><a v-bind:href="pick.trailer_url">Trailer</a></p>

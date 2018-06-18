@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import * as firebase from 'firebase';
 
 import Nav from './components/Nav.vue'
 import Upcoming from './components/Upcoming.vue'
