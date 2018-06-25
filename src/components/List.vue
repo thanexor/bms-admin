@@ -54,8 +54,8 @@ export default {
                     db.collection('Users').doc(''+movieDoc.added_by).get().then(function(querySnapshot) {
                         var userData = querySnapshot.data();
 
-                        movieDoc.added_by_name = userData.displayName;
-                        movieDoc.added_by_id = userData.uid;
+                        movieDoc.added_by_name = userData !== undefined ? userData.displayName : 'someone';
+                        movieDoc.added_by_id = userData !== undefined ? userData.uid : 13371337;
 
                         // Only push after this finishes
                         results.push(movieDoc);
@@ -70,14 +70,18 @@ export default {
             searchField.focus();
         },
         makePick: function (movie) {
+            var add   = !!confirm('Are you sure you want to pick ' + movie.title + '?');
+
             const data = {
                 movieId: movie.baseId
             }
 
-            const makePick = firebase.functions().httpsCallable('makePick');
-            makePick(data).then(result => {
-                console.log('result', result)
-            })
+            if (add) {
+                const makePick = firebase.functions().httpsCallable('makePick');
+                makePick(data).then(result => {
+                    // Firebase function should do a reload :/
+                });
+            }
         }
     },
     created: function () {

@@ -168,7 +168,6 @@ export default {
                     minute: "2-digit"
                 });
 
-                console.log('this.nihgt', this.openSlots);
                 this.openSlots = new Array(this.night.slots - this.picks.length).fill(undefined);
             });
         });

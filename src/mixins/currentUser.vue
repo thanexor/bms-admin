@@ -16,7 +16,6 @@ Vue.mixin({
             var userRef = db.collection('Users').doc(email);
 
             userRef.get().then((user) => {
-                console.log('auth', authUser.providerData);
                 if (!user.exists) {
                     userRef.set(authUser.providerData[0]).then(() => {
                         console.log('User Data', userRef)
