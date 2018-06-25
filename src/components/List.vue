@@ -79,7 +79,8 @@ export default {
             if (add) {
                 const makePick = firebase.functions().httpsCallable('makePick');
                 makePick(data).then(result => {
-                    // Firebase function should do a reload :/
+                    alert('Successfully picked ' + movie.title + '!');
+                    window.location.reload(true);
                 });
             }
         }
