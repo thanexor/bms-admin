@@ -23,6 +23,7 @@
 
 <script>
 import firebase from 'firebase'
+import DscrdWebhooks from 'webhook-discord'
 
 export default {
     name: 'List',
@@ -32,6 +33,7 @@ export default {
             movies: [],
             currentUser: null,
             defaultPointCost: window.Global.defaultPointCost,
+            dwh: null,
         }
     },
 
@@ -80,9 +82,15 @@ export default {
                 movieId: movie.baseId
             }
 
+            // console.log(movie.title);
+            // console.log(this.currentUser.displayName);
+
+
             if (add) {
                 const makePick = firebase.functions().httpsCallable('makePick');
                 makePick(data).then(result => {
+                    // Send message to Discord
+                    this.dwh.custom("WILLARD THE ROBOT COP", "" + movie.title + " was just picked by " + this.currentUser.displayName + '!', "PICK MADE", "#f0407b");
                     alert('Successfully picked ' + movie.title + '!');
                     window.location.reload(true);
                 });
@@ -91,6 +99,19 @@ export default {
     },
     created: function () {
         this.fetchMovies();
+
+        var vm = this;
+        var db = firebase.firestore();
+
+        db.collection("Keys").doc("discord-bot").get().then(function(doc) {
+            if (doc.exists) {
+                // this is all janked up because some dickbutt spammed our channel
+                // probably doesn't make a difference but oh well
+                vm.dwh = new DscrdWebhooks('h'+'t'+'tps'+':'+'/'+'/dis'+'cor'+'dapp.c'+'om/a'+'pi/we'+'bhooks'+'/'+'460900246398959617/' + doc.data().id);
+            }
+        }).catch(function(error) {
+            console.log("Couldn't get Discrd key!", error);
+        });
     }
 }
 </script>

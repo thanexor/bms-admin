@@ -95,6 +95,7 @@ export default {
             isAttending: false,
             isAttendingText: "Join",
             currentUser: null,
+            defaultPointCost: window.Global.defaultPointCost,
         }
     },
 

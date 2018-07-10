@@ -89,7 +89,7 @@ export default {
     },
     created: function () {
         var vm = this;
-        var db    = firebase.firestore();
+        var db = firebase.firestore();
         const settings = {timestampsInSnapshots: true};
         db.settings(settings);
 
