@@ -21,8 +21,8 @@
                             <h4><a v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a> <small>({{ new Date(pick.movie.release_date).getFullYear() }})</small></h4>
                             <h3>Picked by {{ pick.picker.displayName }}</h3>
                         </div>
-                        <p><a v-bind:href="pick.trailer_url">Trailer</a></p>
-                        <p><strong>Budget</strong>: N/A (lol)</p>
+                        <!-- <p><a v-bind:href="pick.trailer_url">Trailer</a></p> -->
+                        <!-- <p><strong>Budget</strong>: N/A (lol)</p> -->
                         <p><strong>Point cost</strong>: {{ pick.total_points }}</p>
                     </div>
 
@@ -63,10 +63,10 @@
                             <span v-else>Pick slot open!</span>
                         </h4>
 
-                        <p v-if="currentUser.total_points >= 3">
+                        <p v-if="currentUser.total_points >= defaultPointCost">
                                 <strong>{{ currentUser.total_points }} points:</strong> You can afford a pick this week
                             </p>
-                        <p v-if="currentUser.total_points < 3">
+                        <p v-if="currentUser.total_points < defaultPointCost">
                             <strong>Only {{ currentUser.total_points }} point<span v-if="currentUser.total_points !== 1">s</span> :</strong>
                             You can't afford a pick this week :(</p>
                     </div>
@@ -168,6 +168,7 @@ export default {
                     minute: "2-digit"
                 });
 
+                console.log('this.nihgt', this.openSlots);
                 this.openSlots = new Array(this.night.slots - this.picks.length).fill(undefined);
             });
         });

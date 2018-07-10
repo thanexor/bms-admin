@@ -1,6 +1,6 @@
 <template>
     <section class="subsection" id="backlog">
-    <h2>To watch <small>{{ movies.length }} movies -- 3 points to make a pick</small></h2>
+    <h2>To watch <small>{{ movies.length }} movies -- {{ defaultPointCost }} points to make a pick</small></h2>
 
     <ul class="backlog">
         <li class="backlog__movie" v-for="movie in movies" v-bind:key=movie.id v-bind:style="{ 'background-image': 'url(' + movie.background_url + ')' }">
@@ -8,7 +8,10 @@
                 <h3><a v-bind:href="movie.url" rel="external">{{ movie.title }}</a></h3>
                 <p v-bind:data-id="movie.added_by_id">Added by {{ movie.added_by_name }}</p>
             </div>
-            <button class="backlog__movie__control" v-on:click="makePick(movie)">Pick</button>
+            <button class="backlog__movie__control" v-on:click="makePick(movie)" v-bind:disabled="currentUser.total_points < defaultPointCost">
+                <span v-if="currentUser.total_points >= defaultPointCost">Pick</span>
+                <span v-if="currentUser.total_points < defaultPointCost">Need points</span>
+            </button>
         </li>
 
         <li class="backlog__movie backlog__movie--add">
@@ -28,6 +31,7 @@ export default {
         return {
             movies: [],
             currentUser: null,
+            defaultPointCost: window.Global.defaultPointCost,
         }
     },
 

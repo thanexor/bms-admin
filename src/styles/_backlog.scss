@@ -79,14 +79,18 @@
       flex-basis: 22%;
     }
 
-    &:hover {
+    &:not([disabled]):hover {
       border-color: $green;
       opacity: 1;
       background: linear-gradient(to top left, rgba(lighten($black, 5%), 1), rgba(lighten($black, 5%), .75));
     }
 
-    &:focus {
+    &:not([disabled]):focus {
       outline: none;
+    }
+
+    &[disabled] {
+      opacity: .5;
     }
   }
 

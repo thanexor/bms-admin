@@ -1,6 +1,6 @@
 <template>
     <section class="subsection" id="watched">
-        <h2>Watched <small>(in progress)</small></h2>
+        <h2>Watched <small>(work in progress)</small></h2>
         <div class="movies movies--flow">
 
             <!-- ACTUAL PICKS -->

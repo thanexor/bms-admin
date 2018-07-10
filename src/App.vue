@@ -33,8 +33,15 @@ export default {
         Watched,
         Scores,
         Rules
+    },
+
+    created: function () {
+        window.Global = {
+            defaultPointCost: 4,
+        };
     }
 }
+
 </script>
 
 <style lang="scss">

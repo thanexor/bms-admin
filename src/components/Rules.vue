@@ -4,14 +4,15 @@
         <h3>POINTS</h3>
         <ul>
             <li>Show up at official Movie Night = 1 point</li>
-            <li>First time showing up = 3 points</li>
+            <li>First time showing up = {{defaultPointCost}} points</li>
         </ul>
 
         <h3>PICKS</h3>
         <ul>
-           <li>Spend 3 points to secure a pick</li>
+           <li>Spend {{defaultPointCost}} points to secure a pick</li>
             <li>Picks can be outbid by adding an additional point (if you hate the movie or whatever)</li>
             <li>Pick spots are made on a first-come-first-serve basis</li>
+            <li>Movies longer than 2 hours of total runtime are an additional point</li>
         </ul>
 
         <h2>Admin</h2>
@@ -31,6 +32,12 @@
 
 <script>
 export default {
-  name: 'Rules'
+  name: 'Rules',
+
+  data: function () {
+        return {
+            defaultPointCost: window.Global.defaultPointCost,
+        }
+    },
 }
 </script>
