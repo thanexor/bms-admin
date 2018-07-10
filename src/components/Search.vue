@@ -18,7 +18,7 @@
 
 <script>
 import firebase from 'firebase'
-import Webhooks from 'webhook-discord'
+import DscrdWebhooks from 'webhook-discord'
 
 export default {
     name: 'Search',
@@ -30,7 +30,7 @@ export default {
             totalPages: null,
             totalResults: null,
             currentUser: null,
-            DiscordWebhook: null,
+            dwh: null,
         }
     },
 
@@ -60,8 +60,7 @@ export default {
         addMovie: function (index) {
             var movie = this.results[index],
                 add   = !!confirm('Are you sure you want to add ' + movie.title + ' to the backlog?'),
-                db    = firebase.firestore(),
-                DiscordWebhook = new Webhooks('https://discordapp.com/api/webhooks/453606494211145754/2wJ8WnoGLKsoBEMrvBCKkkVtZcfu_tkjbs7iJQ1p9Z4296DkTpD-5Vxyl0SM9vUx3u3C');
+                db    = firebase.firestore();
 
             if (add) {
                 const settings = {timestampsInSnapshots: true};
@@ -73,12 +72,15 @@ export default {
                     if (snapshot.empty) {
                         movie.added_by = this.currentUser.email;
                         movies.add(movie)
+
+                        console.log(this.dwh);
+
+                        // Send message to Discord
+                        this.dwh.custom("WILLARD THE ROBOT COP", "" + movie.title + " was just added by " + this.currentUser.displayName, "NEW BACKLOG MOVIE", "#f0407b");
                     } else {
                         alert(movie.title + ' already exists on the backlog.')
                     }
                 });
-
-                DiscordWebhook.custom("WILLARD THE ROBOT COP", "" + movie.title + " was just added by " + this.currentUser.displayName, "NEW BACKLOG MOVIE", "#f0407b")
 
                 this.clearResults();
                 this.search = '';
@@ -86,7 +88,20 @@ export default {
         }
     },
     created: function () {
-        //
+        var vm = this;
+        var db    = firebase.firestore();
+        const settings = {timestampsInSnapshots: true};
+        db.settings(settings);
+
+        db.collection("Keys").doc("discord-bot").get().then(function(doc) {
+            if (doc.exists) {
+                // this is all janked up because some dickbutt spammed our channel
+                // probably doesn't make a difference but oh well
+                vm.dwh = new DscrdWebhooks('h'+'t'+'tps'+':'+'/'+'/dis'+'cor'+'dapp.c'+'om/a'+'pi/we'+'bhooks'+'/'+'460900246398959617/' + doc.data().id);
+            }
+        }).catch(function(error) {
+            console.log("Couldn't get Discrd key!", error);
+        });
     }
 }
 </script>

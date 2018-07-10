@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 
 import Nav from './components/Nav.vue'
 import Upcoming from './components/Upcoming.vue'
@@ -36,9 +37,17 @@ export default {
     },
 
     created: function () {
-        window.Global = {
-            defaultPointCost: 4,
-        };
+        window.Global = {};
+        var G = {};
+
+        const db = firebase.firestore();
+        const settings = {timestampsInSnapshots: true};
+        db.settings(settings);
+
+        G.defaultPointCost = 4;
+        
+        // Set global values
+        window.Global = G;
     }
 }
 

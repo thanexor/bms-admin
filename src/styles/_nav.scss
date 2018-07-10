@@ -240,6 +240,8 @@
   img {
     display: inline-block;
     height: 25px;
+    min-width: 25px;
+    background: $black;
     margin-right: .5em;
     vertical-align: middle;
     border-radius: 50%;
