@@ -19,11 +19,58 @@
 
     <title>Bad Movie Squad</title>
   </head>
-  <body>
+  <body style="margin: 0; padding: 0;">
     <noscript>
       <strong>We're sorry but bms-admin doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <div id="app" style="overflow: hidden;">
+      <style type="text/css">
+        @keyframes spinner {
+          to {transform: rotate(360deg);}
+        }
+        .loading {
+          font-family: Helvetica, Arial, sans-serif;
+          width: 100vw;
+          height: 100vh;
+          overflow: hidden;
+          position: absolute;
+          text-align: center;
+          z-index: 100;
+          background: linear-gradient(
+            to bottom right,
+            rgba(235, 190, 210, .75),
+            rgba(235, 190, 210, .98)
+          );
+        }
+        .loading h1 {
+          font-weight: 600;
+          font-size: 30px;
+          letter-spacing: .35em;
+          width: 100%;
+          position: absolute;
+          top: 50%;
+          left: 0;
+          transform: translateY(-75%);
+          margin: 0;
+        }
+        .loading img {
+          display: block;
+          margin: 15px auto 0;
+          height: 50px;
+          animation: spinner 800ms linear infinite;
+        }
+      </style>
+
+      <div class="loading">
+        <h1>
+            <span>LOADING</span>
+            <img src="images/breen-loading.gif" />
+        </h1>
+      </div>
+
+      <!-- built files will be injected here -->
+
+
+    </div>
   </body>
 </html>

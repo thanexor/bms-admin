@@ -1,16 +1,16 @@
 <template>
     <div id="app">
-      <Nav/>
+        <Nav/>
 
-      <div class="main">
+        <div class="main">
 
-        <Upcoming />
-        <List />
-        <Scores />
-        <Watched />
-        <Rules />
+            <Upcoming />
+            <List />
+            <Scores />
+            <Watched />
+            <Rules />
 
-      </div>
+          </div>
     </div>
 </template>
 
