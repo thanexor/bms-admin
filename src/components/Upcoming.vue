@@ -8,7 +8,7 @@
                     <p>{{night.date}} @ {{night.location}}</p>
                 </div>
                 <div class="night__meta__actions">
-                    <button class="night__action--join btn btn--mini btn--mini--light" v-on:click="toggleAttendance">{{isAttendingText}}</button>
+                    <button class="night__action--join btn btn--mini btn--mini--light" v-on:click="toggleAttendance" style="display: none;">{{isAttendingText}}</button>
                 </div>
             </div>
 
