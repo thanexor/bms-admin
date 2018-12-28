@@ -44,8 +44,8 @@ export default {
         const settings = {timestampsInSnapshots: true};
         db.settings(settings);
 
-        G.defaultPointCost = 4;
-        
+        G.defaultPointCost = 3;
+
         // Set global values
         window.Global = G;
     }
