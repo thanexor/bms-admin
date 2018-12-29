@@ -1,6 +1,6 @@
 <template>
     <section class="subsection" id="backlog">
-    <h2>To watch <small>{{ movies.length }} movies -- {{ defaultPointCost }} points to make a pick</small></h2>
+    <h2>To watch <small>{{ movies.length }} movies in backlog, {{ defaultPointCost }} points to make a pick</small></h2>
 
     <ul class="backlog">
         <li class="backlog__movie" v-for="movie in movies" v-bind:key=movie.id v-bind:style="{ 'background-image': 'url(' + movie.background_url + ')' }">
