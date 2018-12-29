@@ -39,17 +39,15 @@
   @include media-up(tablet) {
     width: 49.25%;
     margin: 5px 0 0 5px;
-    min-height: 8vw;
   }
 
   @include media-up(standard) {
     width: 32.75%;
-    min-height: 12vw;
   }
 
   @include media-up(large) {
     width: 24.55%;
-    min-height: 10vw;
+    min-height: 8vw;
   }
 
   .backlog__movie__control {
@@ -102,7 +100,7 @@
     &:before {
       opacity: 0;
     }
-    
+
     .btn {
       height: 100%;
     }

@@ -40,32 +40,45 @@ export default {
     methods: {
         fetchMovies: function () {
             var db   = firebase.firestore(),
+                watchedRefIds = [],
                 results = [];
+
+            var count = 0;
+            // Build array of watched film IDs, to exclude from all backlog movies
+            db.collection('Picks').where("state", "==", "completed").get().then(picks => {
+                picks.forEach(pick => {
+                    watchedRefIds.push(pick.data().movie.id);
+                })
+            });
 
             db.collection("Movies").orderBy('title', 'asc').get().then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
 
                     var movieDoc = doc.data();
 
-                    movieDoc.url    = "https://www.themoviedb.org/movie/" + movieDoc.id;
-                    movieDoc.baseId = doc.id;
+                    // Compare watched movie IDs from picks to all backlog IDs
+                    // Only add it if it was never picked and marked 'completed'
+                    if (watchedRefIds.indexOf(doc.id) === -1) {
+                        movieDoc.url    = "https://www.themoviedb.org/movie/" + movieDoc.id;
+                        movieDoc.baseId = doc.id;
 
-                    // Probably a better way to do this
-                    if (movieDoc.backdrop_path === null) {
-                        movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.poster_path;
-                    } else {
-                        movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
+                        // Probably a better way to do this
+                        if (movieDoc.backdrop_path === null) {
+                            movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.poster_path;
+                        } else {
+                            movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
+                        }
+
+                        db.collection('Users').doc(''+movieDoc.added_by).get().then(function(querySnapshot) {
+                            var userData = querySnapshot.data();
+
+                            movieDoc.added_by_name = userData !== undefined ? userData.displayName : 'someone';
+                            movieDoc.added_by_id = userData !== undefined ? userData.uid : 13371337;
+
+                            // Only push after this finishes
+                            results.push(movieDoc);
+                        });
                     }
-
-                    db.collection('Users').doc(''+movieDoc.added_by).get().then(function(querySnapshot) {
-                        var userData = querySnapshot.data();
-
-                        movieDoc.added_by_name = userData !== undefined ? userData.displayName : 'someone';
-                        movieDoc.added_by_id = userData !== undefined ? userData.uid : 13371337;
-
-                        // Only push after this finishes
-                        results.push(movieDoc);
-                    });
                 });
             });
 
@@ -81,10 +94,6 @@ export default {
             const data = {
                 movieId: movie.baseId
             }
-
-            // console.log(movie.title);
-            // console.log(this.currentUser.displayName);
-
 
             if (add) {
                 const makePick = firebase.functions().httpsCallable('makePick');
@@ -110,7 +119,7 @@ export default {
                 vm.dwh = new DscrdWebhooks('h'+'t'+'tps'+':'+'/'+'/dis'+'cor'+'dapp.c'+'om/a'+'pi/we'+'bhooks'+'/'+'460900246398959617/' + doc.data().id);
             }
         }).catch(function(error) {
-            console.log("Couldn't get Discrd key!", error);
+            console.log("Couldn't get Discord key!", error);
         });
     }
 }
