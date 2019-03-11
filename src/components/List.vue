@@ -102,7 +102,7 @@ export default {
                 makePick(data).then(result => {
                     // Send message to Discord
                     this.dwh.custom("WILLARD THE ROBOT COP", "" + movie.title + " was just picked by " + this.currentUser.displayName + '!', "PICK MADE", "#f0407b");
-                    alert('Successfully picked ' + movie.title + '!');
+                    // alert('Successfully picked [' + movie.title + '](' + movie. + ')! \n\n');
                     window.location.reload(true);
                 });
             }
