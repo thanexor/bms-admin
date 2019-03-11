@@ -43,7 +43,6 @@ export default {
                 watchedRefIds = [],
                 results = [];
 
-            var count = 0;
             // Build array of watched film IDs, to exclude from all backlog movies
             db.collection('Picks').where("state", "==", "completed").get().then(picks => {
                 picks.forEach(pick => {
@@ -97,7 +96,7 @@ export default {
 
             if (add) {
                 const makePick = firebase.functions().httpsCallable('makePick');
-                makePick(data).then(result => {
+                makePick(data).then(() => {
                     // Send message to Discord
                     this.dwh.custom("WILLARD THE ROBOT COP", "" + movie.title + " was just picked by " + this.currentUser.displayName + '!', "PICK MADE", "#f0407b");
                     alert('Successfully picked ' + movie.title + '!');

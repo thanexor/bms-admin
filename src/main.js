@@ -40,8 +40,6 @@ const router = new VueRouter({
   routes: routes
 })
 
-
-
 firebase.auth().onAuthStateChanged(function(authUser) {
   var component = Login;
 
@@ -54,3 +52,5 @@ firebase.auth().onAuthStateChanged(function(authUser) {
     render: createEle => createEle (component)
   }).$mount('#app')
 });
+
+this.currentUser; // This is a hack to make our build stop yelling at us because we just need to import the mixin
