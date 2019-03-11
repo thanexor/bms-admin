@@ -78,14 +78,14 @@
   margin-bottom: 5px;
   padding: 2px;
   border: 0;
-  background: lighten($black, 90%);
+  background: lighten($purple, 75%);
   font-size: 1.25rem;
   width: 1.85em;
   height: 1.85em;
   line-height: 1;
 
   + .btn-emoji-toggle {
-    border-left: 1px solid lighten($black, 80%);
+    border-left: 1px solid lighten($purple, 70%);
   }
 
   &:active,

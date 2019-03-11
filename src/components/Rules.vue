@@ -16,9 +16,8 @@
         </ul>
 
         <h2>Admin</h2>
-        <h3>Close night</h3>
         <div class="admin-close">
-            <h4>Title of Night</h4>
+            <h3>Close night: Fuck John Cusack</h3>
             <div class="admin-close__meta">
                 <p>April 20th, 2019</p>
             </div>
@@ -83,7 +82,7 @@
                     </div>
                 </li>
             </ul>
-            <button class="btn btn--mini">Complete night &amp; create next week</button>
+            <button class="btn btn--mini">Complete night &amp; create next</button>
         </div>
     </section>
 </template>
