@@ -74,6 +74,7 @@ export default {
   },
 
   created: function () {
+    console.log('c', this);
     // this.currentUser = currentUser;
   }
 }
