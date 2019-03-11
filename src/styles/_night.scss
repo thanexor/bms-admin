@@ -130,6 +130,7 @@
   background-repeat: no-repeat;
   background-position: left top;
   color: $white;
+  min-height: 120px;
 
   p {
     margin: 0;
@@ -236,5 +237,26 @@
         font-size: 125%;
       }
     }
+  }
+}
+
+.movie--listy {
+  width: 100%;
+  min-height: 0;
+  padding-top: 15px;
+  padding-bottom: 15px;
+
+  @include media-up (tablet) {
+    width: 50%;
+  }
+
+  .movie__meta {
+    min-height: 0;
+    padding-left: 45px;
+    background-size: 18px auto;
+  }
+
+  p {
+    display: none;
   }
 }

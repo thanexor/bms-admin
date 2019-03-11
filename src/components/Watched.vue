@@ -4,7 +4,7 @@
         <div class="movies movies--flow">
 
             <!-- ACTUAL PICKS -->
-            <div class="movie movie--is-collapsed" v-for="pick in watchedPicks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id" v-bind:data-id="pick.id">
+            <div class="movie movie--listy" v-for="pick in watchedPicks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id" v-bind:data-id="pick.id">
                 <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
                     <div class="movie__head">
                         <h4><a v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a> <small>({{ new Date(pick.movie.release_date).getFullYear() }})</small></h4>
@@ -15,7 +15,7 @@
                     <p><strong>Point cost</strong>: {{ pick.total_points }}</p>
                 </div>
 
-                <button class="movie__collapse-toggle" v-on:click="toggleCollapse">^</button>
+                <!-- <button class="movie__collapse-toggle" v-on:click="toggleCollapse">^</button> -->
 
                 <!-- <div class="movie__ratings">
                     <div class="movie__ratings__listing">

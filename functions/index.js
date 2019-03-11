@@ -68,7 +68,7 @@ exports.makePick = functions.https.onCall((data, context) => {
         movie: admin.firestore().collection('Movies').doc(movieId),
         picker: admin.firestore().collection('Users').doc(email),
         state: "active",
-        total_points: 4
+        total_points: 3
     }).then(() => {
         return {test: true}
     });

@@ -28,13 +28,13 @@
     z-index: 0;
 
     // makes darkening bg
-    background: linear-gradient(to top left, rgba($black, 0), rgba($black, .9));
+    background: linear-gradient(to top left, rgba($black, 0), rgba($black, .8));
   }
 
-  &:nth-child(2n) { background-color: rgba($teal,.5); }
-  &:nth-child(2n+3) { background-color: rgba($green,.5); }
-  &:nth-child(3n) { background-color: rgba($babyblue,.5); }
-  &:nth-child(5n+1) { background-color: rgba($purple,.5); }
+  &:nth-child(2n) { background-color: rgba($teal,.6); }
+  &:nth-child(2n+3) { background-color: rgba($green,.6); }
+  &:nth-child(3n) { background-color: rgba($babyblue,.6); }
+  &:nth-child(5n+1) { background-color: rgba($purple,.6); }
 
   @include media-up(tablet) {
     width: 49.25%;
