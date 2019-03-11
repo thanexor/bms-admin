@@ -16,14 +16,72 @@
         </ul>
 
         <h2>Admin</h2>
-        <div>
-            <h3>Current night: Doom, Lifeforce</h3>
+        <h3>Close night</h3>
+        <div class="admin-close">
+            <h4>Title of Night</h4>
+            <div class="admin-close__meta">
+                <p>April 20th, 2019</p>
+            </div>
+
             <h3>Attendees &amp; ratings:</h3>
-            <ul class="list-inline">
-                <li>Thane -- 😐, 😐</li>
-                <li>Larry -- 😐, 😐</li>
-                <li>Chris -- <strong>none!</strong></li>
-                <li>Jackson -- 😐, 😐</li>
+            <ul class="ratings-controls">
+                <li class="ratings-control">
+                    <h4><input class="toggle-attendee" type="checkbox" checked /> Thane</h4>
+                    <div class="ratings-control__group">
+                        <div class="ratings-control__group__slot">
+                            <h5>Dude, Where's My Car?</h5>
+                            <button class="btn-emoji-toggle">😍</button>
+                            <button class="btn-emoji-toggle">😐</button>
+                            <button class="btn-emoji-toggle">😡</button>
+                            <button class="btn-emoji-toggle is-checked">&nbsp;</button>
+                        </div>
+                        <div class="ratings-control__group__slot">
+                            <h5>Twisted Pair</h5>
+                            <button class="btn-emoji-toggle">😍</button>
+                            <button class="btn-emoji-toggle">😐</button>
+                            <button class="btn-emoji-toggle">😡</button>
+                            <button class="btn-emoji-toggle is-checked">&nbsp;</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="ratings-control">
+                    <h4><input class="toggle-attendee" type="checkbox" checked /> Wizzy</h4>
+                    <div class="ratings-control__group">
+                        <div class="ratings-control__group__slot">
+                            <h5>Dude, Where's My Car?</h5>
+                            <button class="btn-emoji-toggle is-checked">😍</button>
+                            <button class="btn-emoji-toggle">😐</button>
+                            <button class="btn-emoji-toggle">😡</button>
+                            <button class="btn-emoji-toggle">&nbsp;</button>
+                        </div>
+                        <div class="ratings-control__group__slot">
+                            <h5>Twisted Pair</h5>
+                            <button class="btn-emoji-toggle is-checked">😍</button>
+                            <button class="btn-emoji-toggle">😐</button>
+                            <button class="btn-emoji-toggle">😡</button>
+                            <button class="btn-emoji-toggle">&nbsp;</button>
+                        </div>
+                    </div>
+                </li>
+                <li class="ratings-control">
+                    <h4><input class="toggle-attendee" type="checkbox" /> Angi</h4>
+                    <div class="ratings-control__group is-disabled">
+                        <div class="ratings-control__group__slot">
+                            <h5>Dude, Where's My Car?</h5>
+                            <button class="btn-emoji-toggle is-checked">😍</button>
+                            <button class="btn-emoji-toggle">😐</button>
+                            <button class="btn-emoji-toggle">😡</button>
+                            <button class="btn-emoji-toggle">&nbsp;</button>
+                        </div>
+                        <div class="ratings-control__group__slot">
+                            <h5>Twisted Pair</h5>
+                            <button class="btn-emoji-toggle is-checked">😍</button>
+                            <button class="btn-emoji-toggle">😐</button>
+                            <button class="btn-emoji-toggle">😡</button>
+                            <button class="btn-emoji-toggle">&nbsp;</button>
+                        </div>
+                    </div>
+                </li>
             </ul>
             <button class="btn btn--mini">Complete night &amp; create next week</button>
         </div>
