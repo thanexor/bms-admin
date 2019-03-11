@@ -62,10 +62,12 @@ export default {
                         movieDoc.baseId = doc.id;
 
                         // Probably a better way to do this
-                        if (movieDoc.backdrop_path === null) {
+                        if (movieDoc.backdrop_path !== null) {
+                            movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
+                        } else if (movieDoc.poster_path !== null) {
                             movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.poster_path;
                         } else {
-                            movieDoc.background_url = 'https://image.tmdb.org/t/p/w300/' + movieDoc.backdrop_path;
+                            movieDoc.background_url = '';
                         }
 
                         db.collection('Users').doc(''+movieDoc.added_by).get().then(function(querySnapshot) {
