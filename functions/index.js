@@ -15,7 +15,7 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
     const prevNight = change.before.data();
     const curNight = change.after.data()
 
-    if (prevNight.state == "pending" && curNight.state == "completed") {
+    if (prevNight.state === "pending" && curNight.state === "completed") {
         // create new night
         admin.firestore().collection('Nights').add({
             location: "TDB",
