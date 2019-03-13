@@ -25,19 +25,35 @@
                 <li>Chris -- <strong>none!</strong></li>
                 <li>Jackson -- 😐, 😐</li>
             </ul>
-            <button class="btn btn--mini">Complete night &amp; create next week</button>
+            <button class="btn btn--mini" v-on:click="completeNight()">Complete night &amp; create next week</button>
         </div>
     </section>
 </template>
 
 <script>
+import firebase from 'firebase'
+
+
 export default {
   name: 'Rules',
 
   data: function () {
-        return {
-            defaultPointCost: window.Global.defaultPointCost,
-        }
-    },
+    return {
+      defaultPointCost: window.Global.defaultPointCost,
+    }
+  },
+
+  methods: {
+    completeNight: function () {
+      var db   = firebase.firestore(),
+          curNight;
+
+      db.collection('Nights').where("state", "==", "pending").get().then(nights => {
+        nights.forEach(night => {
+          night.data();
+        });
+      });
+    }
+  }
 }
 </script>

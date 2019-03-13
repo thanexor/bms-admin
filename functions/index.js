@@ -12,18 +12,10 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 });
 
 exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdate((change, context) => {
-    if (change.data().state === "closed") {
-        // get picks from night
-        // search for UserPicks that match the picks
-        // from the user pick subtract the pick points from the user's total points
+    const prevNight = change.before.data();
+    const curNight = change.after.data()
 
-        // get users from the Night
-        // add points to the users total_points
-
-        // set the pick/night to completed
-
-        // create new night?
-    }
+    console.log('Updating Night', prevNight, curNight);
 });
 
 exports.toggleAttendance = functions.https.onCall((data, context) => {
