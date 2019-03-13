@@ -102,8 +102,7 @@ export default {
 
   methods: {
     completeNight: function () {
-      var db   = firebase.firestore(),
-          curNight;
+      var db   = firebase.firestore();
 
       db.collection('Nights').where("state", "==", "pending").get().then(nights => {
         nights.forEach(night => {
