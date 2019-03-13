@@ -100,7 +100,9 @@ export default {
                 const makePick = firebase.functions().httpsCallable('makePick');
                 makePick(data).then(() => {
                     // Send message to Discord
-                    this.dwh.custom("WILLARD THE ROBOT COP", "" + movie.title + " was just picked by " + this.currentUser.displayName + '!', "PICK MADE", "#f0407b");
+                    var message = "[" + movie.title + "](" + movie.url + ") was just picked by " + this.currentUser.displayName + '!\n\n More @ [ badmoviesquad.com](https://badmoviesquad.com)';
+
+                    this.dwh.custom("WILLARD THE ROBOT COP", message, "PICK MADE", "#f0407b");
                     alert('Successfully picked ' + movie.title + '!');
                     window.location.reload(true);
                 });

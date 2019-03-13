@@ -73,10 +73,12 @@ export default {
                         movie.added_by = this.currentUser.email;
                         movies.add(movie)
 
-                        console.log(this.dwh);
+                        movie.url    = "https://www.themoviedb.org/movie/" + movie.id;
+                        var message = "[" + movie.title + "](" + movie.url + ") was just added by " + this.currentUser.displayName + '!\n\n More @ [ badmoviesquad.com](https://badmoviesquad.com)';
+                        console.log(movie);
 
                         // Send message to Discord
-                        this.dwh.custom("WILLARD THE ROBOT COP", "" + movie.title + " was just added by " + this.currentUser.displayName, "NEW BACKLOG MOVIE", "#f0407b");
+                        this.dwh.custom("WILLARD THE ROBOT COP", message, "NEW BACKLOG MOVIE", "#f0407b");
                     } else {
                         alert(movie.title + ' already exists on the backlog.')
                     }
