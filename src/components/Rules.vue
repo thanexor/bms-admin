@@ -65,7 +65,6 @@ export default {
   },
 
   methods: {
-
     completeNight: function () {
       var db   = firebase.firestore();
 
@@ -88,7 +87,6 @@ export default {
           results = [],
           attendees = [];
 
-      // Build array of watched film IDs, to exclude from all backlog movies
       db.collection('Users').where("total_points", ">", 0).get().then(activeUsers => {
         activeUsers.forEach(activeUser => {
           this.attendees.push(activeUser.data());
