@@ -113,9 +113,7 @@ export default {
           }).then(function (){
             window.location.reload(true);
           });
-
-
-          console.log('night', night)
+          
         });
       });
     }
