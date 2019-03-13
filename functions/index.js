@@ -16,8 +16,8 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
     const curNight = change.after.data();
 
     var now = new Date(),
-        nextNight = now.setDate(now.getDate() + (3+(7-now.getDay())) % 7),
-        nextNightFormatted = new Date
+        nextNight = now.setDate(now.getDate() + (3+(7-now.getDay())) % 7)
+        timestamp = new admin.firestore().Timestamp(nextNight);
 
     if (prevNight.state === "pending" && curNight.state === "completed") {
         // create new night
@@ -29,7 +29,7 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
         return admin.firestore().collection('Nights').add({
             location: "TDB",
             slots: 2,
-            date: now.toLocaleDateString('en-US', dateOpts),
+            date: timestamp,
             state: "pending",
             title: "TBD",
         })
