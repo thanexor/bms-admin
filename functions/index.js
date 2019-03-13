@@ -19,7 +19,7 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
         // create new night
         var now = new Date();
 
-        admin.firestore().collection('Nights').add({
+        return admin.firestore().collection('Nights').add({
             location: "TDB",
             slots: 2,
             date: now.setDate(now.getDate() + (x+(7-now.getDay())) % 7),
