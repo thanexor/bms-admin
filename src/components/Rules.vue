@@ -106,7 +106,13 @@ export default {
 
       db.collection('Nights').where("state", "==", "pending").get().then(nights => {
         nights.forEach(night => {
-          night.data();
+
+          night.ref.update({
+            state: 'completed'
+          }).then(function (){
+            window.location.reload(true);
+          });
+          
         });
       });
     }
