@@ -1,7 +1,48 @@
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /{document=**} {
-      allow read, write;
+    match /Backlog/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
+    }
+
+    match /Keys/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
+    }
+
+    match /Movies/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
+    }
+
+    match /Nights/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
+    }
+
+    match /Picks/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
+    }
+
+    match /Ratings/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
+    }
+
+    match /Roles/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
+    }
+
+    match /UserNights/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
+    }
+
+    match /Users/{document} {
+      allow read: if true;
+      allow write: if get(/databases/$(database)/documents/Users/$(request.auth.token.email)).data.activated == true;
     }
   }
 }
