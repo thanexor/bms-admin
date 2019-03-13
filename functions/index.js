@@ -22,7 +22,7 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
         return admin.firestore().collection('Nights').add({
             location: "TDB",
             slots: 2,
-            date: now.setDate(now.getDate() + (x+(7-now.getDay())) % 7),
+            date: now.setDate(now.getDate() + (3+(7-now.getDay())) % 7),
             state: "pending",
             title: "TBD",
         })
