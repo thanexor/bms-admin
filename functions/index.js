@@ -13,16 +13,23 @@ exports.helloWorld = functions.https.onRequest((request, response) => {
 
 exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdate((change, context) => {
     const prevNight = change.before.data();
-    const curNight = change.after.data()
+    const curNight = change.after.data();
+
+    var now = new Date(),
+        nextNight = now.setDate(now.getDate() + (3+(7-now.getDay())) % 7),
+        nextNightFormatted = new Date
 
     if (prevNight.state === "pending" && curNight.state === "completed") {
         // create new night
-        var now = new Date();
+        let now = new Date(),
+            dateOpts = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', hour:"numeric", timeZone:'short' };
+
+        now.setDate(now.getDate() + (3+(7-now.getDay())) % 7); // Set to the new wednesday
 
         return admin.firestore().collection('Nights').add({
             location: "TDB",
             slots: 2,
-            date: now.setDate(now.getDate() + (3+(7-now.getDay())) % 7),
+            date: now.toLocaleDateString('en-US', dateOpts),
             state: "pending",
             title: "TBD",
         })
@@ -38,7 +45,7 @@ exports.toggleAttendance = functions.https.onCall((data, context) => {
     console.log('USER:', db.doc('Users/' + uid));
     return db.collection('Users').doc(uid).get(user => {
         console.log('user?: ', user.data());
-    }).then(() =>{
+     }).then(() =>{
         return { isAttending: true }
     })
 });
