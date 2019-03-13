@@ -18,7 +18,6 @@ Vue.mixin({
             userRef.get().then((user) => {
                 if (!user.exists) {
                     userRef.set(authUser.providerData[0]).then(() => {
-                        console.log('User Data', userRef)
                         userRef.update({admin: false}).then(() => {
                             userRef.get().then((user) => {
                                 this.$data.currentUser = user.data()
@@ -32,4 +31,6 @@ Vue.mixin({
         }
     }
 })
+
+export default {};
 </script>

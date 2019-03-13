@@ -53,4 +53,4 @@ firebase.auth().onAuthStateChanged(function(authUser) {
   }).$mount('#app')
 });
 
-this.currentUser; // This is a hack to make our build stop yelling at us because we just need to import the mixin
+console.log('App Init',currentUser);

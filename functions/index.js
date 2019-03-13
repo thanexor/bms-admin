@@ -22,7 +22,7 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
             slots: 2,
             date: now.setDate(now.getDate() + (x+(7-now.getDay())) % 7),
             state: "pending",
-            title: "TBD"
+            title: "TBD",
         })
         // deduct 3 points from the pickers
     }
