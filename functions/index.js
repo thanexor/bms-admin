@@ -15,7 +15,17 @@ exports.completeNight = functions.firestore.document('Nights/{nightId}').onUpdat
     const prevNight = change.before.data();
     const curNight = change.after.data()
 
-    console.log('Updating Night', prevNight, curNight);
+    if (prevNight.state == "pending" && curNight.state == "completed") {
+        // create new night
+        admin.firestore().collection('Nights').add({
+            location: "TDB",
+            slots: 2,
+            date: now.setDate(now.getDate() + (x+(7-now.getDay())) % 7),
+            state: "pending",
+            title: "TBD"
+        })
+        // deduct 3 points from the pickers
+    }
 });
 
 exports.toggleAttendance = functions.https.onCall((data, context) => {
