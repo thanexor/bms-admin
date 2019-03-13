@@ -24,46 +24,9 @@
 
             <h3>Attendees &amp; ratings:</h3>
             <ul class="ratings-controls">
-                <li class="ratings-control">
-                    <h4><input class="toggle-attendee" type="checkbox" checked /> Thane</h4>
-                    <div class="ratings-control__group">
-                        <div class="ratings-control__group__slot">
-                            <h5>Dude, Where's My Car?</h5>
-                            <button class="btn-emoji-toggle">😍</button>
-                            <button class="btn-emoji-toggle">😐</button>
-                            <button class="btn-emoji-toggle">😡</button>
-                            <button class="btn-emoji-toggle is-checked">&nbsp;</button>
-                        </div>
-                        <div class="ratings-control__group__slot">
-                            <h5>Twisted Pair</h5>
-                            <button class="btn-emoji-toggle">😍</button>
-                            <button class="btn-emoji-toggle">😐</button>
-                            <button class="btn-emoji-toggle">😡</button>
-                            <button class="btn-emoji-toggle is-checked">&nbsp;</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="ratings-control">
-                    <h4><input class="toggle-attendee" type="checkbox" checked /> Wizzy</h4>
-                    <div class="ratings-control__group">
-                        <div class="ratings-control__group__slot">
-                            <h5>Dude, Where's My Car?</h5>
-                            <button class="btn-emoji-toggle is-checked">😍</button>
-                            <button class="btn-emoji-toggle">😐</button>
-                            <button class="btn-emoji-toggle">😡</button>
-                            <button class="btn-emoji-toggle">&nbsp;</button>
-                        </div>
-                        <div class="ratings-control__group__slot">
-                            <h5>Twisted Pair</h5>
-                            <button class="btn-emoji-toggle is-checked">😍</button>
-                            <button class="btn-emoji-toggle">😐</button>
-                            <button class="btn-emoji-toggle">😡</button>
-                            <button class="btn-emoji-toggle">&nbsp;</button>
-                        </div>
-                    </div>
-                </li>
-                <li class="ratings-control">
-                    <h4><input class="toggle-attendee" type="checkbox" /> Angi</h4>
+                
+                <li class="ratings-control" v-for="attendee in attendees">
+                    <h4><input class="toggle-attendee" type="checkbox" /> {{ attendee.displayName }}</h4>
                     <div class="ratings-control__group is-disabled">
                         <div class="ratings-control__group__slot">
                             <h5>Dude, Where's My Car?</h5>
@@ -97,6 +60,7 @@ export default {
   data: function () {
     return {
       defaultPointCost: window.Global.defaultPointCost,
+      attendees: []
     }
   },
 
@@ -112,10 +76,27 @@ export default {
           }).then(function (){
             window.location.reload(true);
           });
-          
+
+        });
+      });
+    },
+
+    fetchAttendees: function () {
+      var db   = firebase.firestore(),
+          watchedRefIds = [],
+          results = [],
+          attendees = [];
+
+      db.collection('Users').where("total_points", ">", 0).get().then(activeUsers => {
+        activeUsers.forEach(activeUser => {
+          this.attendees.push(activeUser.data());
         });
       });
     }
+  },
+
+  created: function () {
+    this.fetchAttendees();
   }
 }
 </script>
