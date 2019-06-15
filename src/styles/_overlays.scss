@@ -1,0 +1,54 @@
+@keyframes spinner {
+  to {transform: rotate(360deg);}
+}
+
+.overlay {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  opacity: 0;
+  // background: rgba($white, .25);
+  background: linear-gradient(
+    to bottom right,
+    rgba(lighten($teal, 30%), .75),
+    rgba(lighten($teal, 30%), .98)
+  );
+  text-align: center;
+  pointer-events: none;
+  transition: opacity 300ms ease-in;
+
+  &.overlay--is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  h2 {
+    font-weight: 600;
+    font-size: 36px;
+    width: 100%;
+    margin: 0 0 .5em;
+  }
+
+  p {
+    margin: .25em 0 2em;
+  }
+
+  .overlay__inner {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    width: 50%;
+    transform: translateY(-50%);
+  }
+
+  img {
+    display: block;
+    margin: 15px auto 0;
+    height: 50px;
+    animation: spinner 800ms linear infinite;
+  }
+}

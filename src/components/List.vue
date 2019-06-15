@@ -18,6 +18,15 @@
             <button class="btn btn--full" v-on:click="addFromList">+ Add a movie</button>
         </li>
     </ul>
+
+    <div class="overlay overlay--modal" v-bind:class="{ 'overlay--is-visible': !!pickLoadingVisible }">
+        <div class="overlay__inner">
+            <h2>Picking {{ pickTitle }}</h2>
+            <p>Sometimes this takes 10+ seconds</p>
+            <img src="images/breen-loading.gif" />
+        </div>
+    </div>
+
     </section>
 </template>
 
@@ -34,6 +43,8 @@ export default {
             currentUser: null,
             defaultPointCost: window.Global.defaultPointCost,
             dwh: null,
+            pickLoadingVisible: false,
+            pickTitle: 'Dickbutt',
         }
     },
 
@@ -97,13 +108,17 @@ export default {
             }
 
             if (add) {
+                this.pickLoadingVisible = true;
+                this.pickTitle = movie.title;
+
                 const makePick = firebase.functions().httpsCallable('makePick');
+
+                this.pickLoadingVisible = false;
                 makePick(data).then(() => {
                     // Send message to Discord
                     var message = "[" + movie.title + "](" + movie.url + ") was just picked by " + this.currentUser.displayName + '!\n\n More @ [ badmoviesquad.com](https://badmoviesquad.com)';
 
-                    this.dwh.custom("WILLARD THE ROBOT COP", message, "PICK MADE", "#f0407b");
-                    alert('Successfully picked ' + movie.title + '!');
+                    // this.dwh.custom("WILLARD THE ROBOT COP", message, "PICK MADE", "#f0407b");
                     window.location.reload(true);
                 });
             }

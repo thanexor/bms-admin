@@ -71,6 +71,7 @@ export default {
                 movies.where("id", "==", movie.id).limit(1).get().then(snapshot => {
                     if (snapshot.empty) {
                         movie.added_by = this.currentUser.email;
+
                         movies.add(movie)
 
                         movie.url    = "https://www.themoviedb.org/movie/" + movie.id;
@@ -80,7 +81,7 @@ export default {
                         // Send message to Discord
                         this.dwh.custom("WILLARD THE ROBOT COP", message, "NEW BACKLOG MOVIE", "#f0407b");
                     } else {
-                        alert(movie.title + ' already exists on the backlog.')
+                        alert(movie.title + ' already exists in the backlog.')
                     }
                 });
 
