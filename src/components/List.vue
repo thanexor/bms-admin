@@ -19,7 +19,7 @@
         </li>
     </ul>
 
-    <div class="overlay overlay--modal" v-bind:class="{ 'overlay--is-visible': !!pickLoadingVisible }">
+    <div class="overlay overlay--modal" v-bind:class="{ 'overlay--is-visible': pickLoadingVisible }">
         <div class="overlay__inner">
             <h2>Picking {{ pickTitle }}</h2>
             <p>Sometimes this takes 10+ seconds</p>
@@ -44,7 +44,7 @@ export default {
             defaultPointCost: window.Global.defaultPointCost,
             dwh: null,
             pickLoadingVisible: false,
-            pickTitle: 'Dickbutt',
+            pickTitle: 'your movie',
         }
     },
 
@@ -101,6 +101,7 @@ export default {
             searchField.focus();
         },
         makePick: function (movie) {
+            var self = this;
             var add   = !!confirm('Are you sure you want to pick ' + movie.title + '?');
 
             const data = {
@@ -112,14 +113,19 @@ export default {
                 this.pickTitle = movie.title;
 
                 const makePick = firebase.functions().httpsCallable('makePick');
+                const postAdd = function () {
+                    self.pickLoadingVisible = false;
 
-                this.pickLoadingVisible = false;
-                makePick(data).then(() => {
                     // Send message to Discord
-                    var message = "[" + movie.title + "](" + movie.url + ") was just picked by " + this.currentUser.displayName + '!\n\n More @ [ badmoviesquad.com](https://badmoviesquad.com)';
+                    var message = "[" + movie.title + "](" + movie.url + ") was just picked by " + self.currentUser.displayName + '!\n\n More @ [ badmoviesquad.com](https://badmoviesquad.com)';
 
-                    // this.dwh.custom("WILLARD THE ROBOT COP", message, "PICK MADE", "#f0407b");
+                    self.dwh.custom("WILLARD THE ROBOT COP", message, "PICK MADE", "#f0407b");
                     window.location.reload(true);
+                };
+
+                // wait a sec
+                makePick(data).then(() => {
+                    setTimeout(postAdd, 500);
                 });
             }
         }
