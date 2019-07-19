@@ -114,7 +114,7 @@ export default {
 
                 const makePick = firebase.functions().httpsCallable('makePick');
                 const postAdd = function () {
-                    alert('wtf');
+                    // alert('wtf');
                     self.pickLoadingVisible = false;
 
                     // Send message to Discord
