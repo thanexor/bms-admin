@@ -18,7 +18,11 @@
                 <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id" v-bind:data-id="pick.id">
                     <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
                         <div class="movie__head">
-                            <h4><a v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a> <small>({{ pick.movie.release_date.substr(0, 4) }})</small></h4>
+                            <h4>
+                                <a v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a>
+                                <small v-if="pick.movie.release_date">({{ pick.movie.release_date.substr(0, 4) }})</small>
+                                <small v-else></small>
+                            </h4>
                             <h3>Picked by {{ pick.picker.displayName }}</h3>
                         </div>
                         <!-- <p><a v-bind:href="pick.trailer_url">Trailer</a></p> -->
@@ -129,25 +133,28 @@ export default {
 
 
         db.collection('Picks').where("state", "==", "active").get().then(picks => {
-            picks.forEach(pick => {
-                var displayPick    = pick.data();
+            // if (picks.length > 0) {
+                picks.forEach(pick => {
+                    var displayPick    = pick.data();
 
-                displayPick.id = pick.id;
+                    displayPick.id = pick.id;
 
-                displayPick.movie.get().then(movie => {
-                    displayPick.movie = movie.data();
-                    displayPick.movie.url = "https://www.themoviedb.org/movie/" + displayPick.movie.id;
-                    displayPick.movie.poster_url = 'https://image.tmdb.org/t/p/w92/' + displayPick.movie.poster_path;
-                    displayPick.movie.backdrop_url = displayPick.movie.backdrop_path !==null ? 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.backdrop_path : '';
-                })
+                    displayPick.movie.get().then(movie => {
+                        displayPick.movie = movie.data();
+                        displayPick.movie.url = "https://www.themoviedb.org/movie/" + displayPick.movie.id;
+                        displayPick.movie.poster_url = 'https://image.tmdb.org/t/p/w92/' + displayPick.movie.poster_path;
+                        displayPick.movie.backdrop_url = displayPick.movie.backdrop_path !==null ? 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.backdrop_path : '';
+                    })
 
-                displayPick.picker.get().then(picker => {
-                    displayPick.picker = picker.data();
-                })
+                    displayPick.picker.get().then(picker => {
+                        displayPick.picker = picker.data();
+                    })
 
-                this.picks.push(displayPick);
-            })
-        })
+                    this.picks.push(displayPick);
+                });
+            // }
+            
+        });
 
         db.collection('Nights').where("state", "==", "pending").get().then(nights => {
             nights.forEach(night => {
