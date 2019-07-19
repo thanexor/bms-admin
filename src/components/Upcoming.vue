@@ -133,27 +133,24 @@ export default {
 
 
         db.collection('Picks').where("state", "==", "active").get().then(picks => {
-            // if (picks.length > 0) {
-                picks.forEach(pick => {
-                    var displayPick    = pick.data();
+            picks.forEach(pick => {
+                var displayPick    = pick.data();
 
-                    displayPick.id = pick.id;
+                displayPick.id = pick.id;
 
-                    displayPick.movie.get().then(movie => {
-                        displayPick.movie = movie.data();
-                        displayPick.movie.url = "https://www.themoviedb.org/movie/" + displayPick.movie.id;
-                        displayPick.movie.poster_url = 'https://image.tmdb.org/t/p/w92/' + displayPick.movie.poster_path;
-                        displayPick.movie.backdrop_url = displayPick.movie.backdrop_path !==null ? 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.backdrop_path : '';
-                    })
+                displayPick.movie.get().then(movie => {
+                    displayPick.movie = movie.data();
+                    displayPick.movie.url = "https://www.themoviedb.org/movie/" + displayPick.movie.id;
+                    displayPick.movie.poster_url = 'https://image.tmdb.org/t/p/w92/' + displayPick.movie.poster_path;
+                    displayPick.movie.backdrop_url = displayPick.movie.backdrop_path !==null ? 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.backdrop_path : '';
+                })
 
-                    displayPick.picker.get().then(picker => {
-                        displayPick.picker = picker.data();
-                    })
+                displayPick.picker.get().then(picker => {
+                    displayPick.picker = picker.data();
+                })
 
-                    this.picks.push(displayPick);
-                });
-            // }
-            
+                this.picks.push(displayPick);
+            });            
         });
 
         db.collection('Nights').where("state", "==", "pending").get().then(nights => {
