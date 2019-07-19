@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  min-height: 2em;
 
   &::before {
     content: '';
@@ -28,26 +29,29 @@
     z-index: 0;
 
     // makes darkening bg
-    background: linear-gradient(to top left, rgba($black, 0), rgba($black, .8));
+    background-image: linear-gradient(to bottom right, rgba($black, .95), rgba($black, .25));
+
+    transition: background 200ms ease-in;
   }
 
-  &:nth-child(2n) { background-color: rgba($teal,.6); }
-  &:nth-child(2n+3) { background-color: rgba($green,.6); }
-  &:nth-child(3n) { background-color: rgba($babyblue,.6); }
-  &:nth-child(5n+1) { background-color: rgba($purple,.6); }
+  &:nth-child(2n) { background-color: rgba($teal,.75); }
+  &:nth-child(2n+3) { background-color: rgba($green,.75); }
+  &:nth-child(3n) { background-color: rgba($babyblue,.75); }
+  &:nth-child(4n+1) { background-color: rgba($purple,.75); }
+  &:nth-child(6n-1) { background-color: rgba($purple,.75); }
 
   @include media-up(tablet) {
     width: 49.25%;
-    margin: 5px 0 0 5px;
+    margin: 0;
   }
 
   @include media-up(standard) {
-    width: 32.75%;
+    width: 25%;
   }
 
   @include media-up(large) {
-    width: 24.55%;
-    min-height: 8vw;
+    width: 19.67%;
+    min-height: 5.5vw;
   }
 
   .backlog__movie__control {
@@ -57,7 +61,7 @@
     flex-basis: 20%;
     flex-shrink: 0;
     flex-grow: 0;
-    margin: 1.5em 1.5em;
+    margin: 1em;
     padding: .65em .75em;
     background: linear-gradient(to top left, rgba(lighten($black, 5%), .25), rgba(lighten($black, 5%), .95));
     border: 2px solid lighten($black, 5%);
@@ -108,17 +112,17 @@
 }
 
 .backlog__movie__meta {
-  padding: 1.5em;
+  padding: 1em;
   color: $white;
   flex-basis: 85%;
   overflow: hidden;
-  text-shadow: 1px 1px 0 rgba($purple, .85);
+  text-shadow: 1px 1px 1px rgba($purple, .75);
   position: relative;
   z-index: 1;
 
   h3 {
     margin: 0;
-    font-size: 1em;
+    font-size: .85em;
     line-height: 1.25;
   }
 
@@ -137,7 +141,7 @@
 
   p {
     margin: 0;
-    font-size: 65%;
+    font-size: .65em;
     opacity: .70;
     font-weight: 400;
   }
