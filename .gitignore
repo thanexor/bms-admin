@@ -12,6 +12,7 @@ node_modules/
 .sass-cache
 assets/build
 /dist
+.firebase
 
 # Log files
 npm-debug.log*
