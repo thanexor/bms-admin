@@ -115,7 +115,8 @@
 }
 
 .movie__meta,
-.movie__ratings {
+.movie__ratings,
+.movie__actions {
   position: relative;
   z-index: 1;
 }
@@ -140,6 +141,19 @@
     a {
       color: $white;
       font-weight: 700;
+    }
+  }
+}
+
+.movie__actions {
+  color: $white;
+  padding-left: 100px;
+
+  button {
+    opacity: .75;
+
+    &:hover {
+      opacity: 1;
     }
   }
 }

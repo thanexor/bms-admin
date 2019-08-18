@@ -101,3 +101,14 @@
     background: $teal;
   }
 }
+
+.btn-link {
+  cursor: pointer;
+  font-size: 1em;
+  padding: 0;
+  background: none transparent;
+  display: inline-block;
+  color: inherit;
+  border: 0;
+  text-decoration: underline;
+}

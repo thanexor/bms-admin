@@ -15,49 +15,56 @@
             <div class="movies">
 
                 <!-- ACTUAL PICKS -->
-                <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id" v-bind:data-id="pick.id">
-                    <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
-                        <div class="movie__head">
-                            <h4>
-                                <a v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a>
-                                <small v-if="pick.movie.release_date">({{ pick.movie.release_date.substr(0, 4) }})</small>
-                                <small v-else></small>
-                            </h4>
-                            <h3>Picked by {{ pick.picker.displayName }}</h3>
+                <template v-if="picks.length > 0">
+                    <div class="movie" v-for="pick in picks" v-bind:style="{ 'background-image': 'url(' + pick.movie.backdrop_url + ')' }" v-bind:key="pick.id" v-bind:data-id="pick.id">
+                        <div class="movie__meta" v-bind:style="{ 'background-image': 'url(' + pick.movie.poster_url + ')' }">
+                            <div class="movie__head">
+                                <h4>
+                                    <a v-bind:href="pick.movie.url" rel="external">{{ pick.movie.title }}</a>
+                                    <small v-if="pick.movie.release_date">({{ pick.movie.release_date.substr(0, 4) }})</small>
+                                    <small v-else></small>
+                                </h4>
+                                <h3>Picked by {{ pick.picker.displayName }}</h3>
+                            </div>
+                            <!-- <p><a v-bind:href="pick.trailer_url">Trailer</a></p> -->
+                            <!-- <p><strong>Budget</strong>: N/A (lol)</p> -->
+                            <p><strong>Point cost</strong>: {{ pick.total_points }}</p>
                         </div>
-                        <!-- <p><a v-bind:href="pick.trailer_url">Trailer</a></p> -->
-                        <!-- <p><strong>Budget</strong>: N/A (lol)</p> -->
-                        <p><strong>Point cost</strong>: {{ pick.total_points }}</p>
+
+                        <!-- MOVIE ACTIONS -->
+                        <div class="movie__actions">
+                            <button v-if="true === true" class="btn-link" v-on:click="removePick(pick)">Remove pick</button>
+                        </div>
+
+                        <!-- <div class="movie__ratings">
+                            <div class="movie__ratings__listing">
+                                <h5>😁</h5>
+                                <ul>
+                                    <li>Thane</li>
+                                    <li>Jackson</li>
+                                    <li>Travis</li>
+                                </ul>
+                            </div>
+
+                            <div class="movie__ratings__listing">
+                                <h5>🖕</h5>
+                                <ul>
+                                    <li>Chris</li>
+                                    <li>Larry</li>
+                                </ul>
+                            </div>
+
+                            <div class="movie__ratings__listing">
+                                <h5>😐</h5>
+                                <ul>
+                                    <li>Nobody!</li>
+                                </ul>
+                            </div>
+
+                        </div> -->
+
                     </div>
-
-                    <!-- <div class="movie__ratings">
-                        <div class="movie__ratings__listing">
-                            <h5>😁</h5>
-                            <ul>
-                                <li>Thane</li>
-                                <li>Jackson</li>
-                                <li>Travis</li>
-                            </ul>
-                        </div>
-
-                        <div class="movie__ratings__listing">
-                            <h5>🖕</h5>
-                            <ul>
-                                <li>Chris</li>
-                                <li>Larry</li>
-                            </ul>
-                        </div>
-
-                        <div class="movie__ratings__listing">
-                            <h5>😐</h5>
-                            <ul>
-                                <li>Nobody!</li>
-                            </ul>
-                        </div>
-
-                    </div> -->
-
-                </div>
+                </template>
 
                 <!-- SHOW OPEN SLOTS -->
                 <div class="movie movie--slot" v-if="picks.length !== night.slots" v-for="item in openSlots" v-bind:key="item">
@@ -90,7 +97,9 @@ export default {
   name: 'Upcoming',
   data: function () {
         return {
-            picks: [],
+            picks: [
+                
+            ],
             night: {
                 title:    '',
                 date:     '',
@@ -122,6 +131,13 @@ export default {
             toggle(data).then(result => {
                 this.isAttending = result.data.isAttending;
             })
+        },
+        removePick: function () {
+            var remove = confirm ('Remove your pick?');
+
+            if (remove) {
+                console.log('run removal');
+            }
         }
 
     },
