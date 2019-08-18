@@ -33,7 +33,7 @@
 
                         <!-- MOVIE ACTIONS -->
                         <div class="movie__actions">
-                            <button v-if="true === true" class="btn-link" v-on:click="removePick(pick)">Remove pick</button>
+                            <button v-if="currentUser.admin || pick.picker.email == currentUser.email" class="btn-link" v-on:click="removePick(pick)">Remove pick</button>
                         </div>
 
                         <!-- <div class="movie__ratings">
@@ -132,11 +132,23 @@ export default {
                 this.isAttending = result.data.isAttending;
             })
         },
-        removePick: function () {
+        removePick: function (pickToRemove) {
             var remove = confirm ('Remove your pick?');
 
             if (remove) {
-                console.log('run removal');
+                console.log('pickToRemove.id', pickToRemove.id);
+
+                const db = firebase.firestore();
+                const settings = {timestampsInSnapshots: true};
+                db.settings(settings);
+
+
+                db.collection("Picks").doc(pickToRemove.id).delete().then(function() {
+                    window.location.reload(true);
+                }).catch(function(error) {
+                    alert("Couldn't remove!");
+                    window.location.reload(true);
+                });
             }
         }
 
@@ -158,7 +170,7 @@ export default {
                     displayPick.movie = movie.data();
                     displayPick.movie.url = "https://www.themoviedb.org/movie/" + displayPick.movie.id;
                     displayPick.movie.poster_url = 'https://image.tmdb.org/t/p/w92/' + displayPick.movie.poster_path;
-                    displayPick.movie.backdrop_url = displayPick.movie.backdrop_path !==null ? 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.backdrop_path : '';
+                    displayPick.movie.backdrop_url = displayPick.movie.backdrop_path !== null ? 'https://image.tmdb.org/t/p/w780/' + displayPick.movie.backdrop_path : '';
                 })
 
                 displayPick.picker.get().then(picker => {
