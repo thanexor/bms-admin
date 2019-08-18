@@ -121,10 +121,14 @@ export default {
                     var message = "[" + movie.title + "](" + movie.url + ") was just picked by " + self.currentUser.displayName + '!\n\n More @ [ badmoviesquad.com](https://badmoviesquad.com)';
 
                     self.dwh.custom("WILLARD THE ROBOT COP", message, "PICK MADE", "#f0407b");
-                    window.location.reload(true);
+
+                    // give discord bot some time to finish before refreshing
+                    setTimeout(function(){
+                        window.location.reload(true);
+                    }, 500);
                 };
 
-                // wait a sec
+                // show pick load even if response is super quick
                 makePick(data).then(() => {
                     setTimeout(postAdd, 500);
                 });
